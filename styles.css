@@ -1508,3 +1508,95 @@ a {
         font-size: 24px;
     }
 }
+
+/* ── AMAZON "ALL" OFFCANVAS DRAWER SIDEBAR MENU ── */
+.amz-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 9998;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.amz-drawer-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.amz-drawer {
+    position: fixed;
+    top: 0;
+    left: -385px;
+    width: 365px;
+    max-width: 85vw;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 9999;
+    overflow-y: auto;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 25px rgba(0,0,0,0.3);
+}
+
+.amz-drawer.active {
+    left: 0;
+}
+
+.amz-drawer-header {
+    background: #232f3e;
+    color: #ffffff;
+    padding: 16px 24px;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.amz-drawer-close {
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+    padding: 4px 8px;
+}
+
+.amz-drawer-body {
+    padding-bottom: 40px;
+}
+
+.amz-menu-section {
+    padding: 14px 0;
+    border-bottom: 1px solid #eaeded;
+}
+
+.amz-menu-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+    padding: 0 24px 8px;
+}
+
+.amz-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 24px;
+    font-size: 13.5px;
+    color: #111111;
+    text-decoration: none;
+    transition: background 0.15s;
+    cursor: pointer;
+}
+
+.amz-menu-item:hover {
+    background: #eaeded;
+}
+
+.amz-menu-arrow {
+    color: #888888;
+    font-weight: 700;
+}

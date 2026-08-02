@@ -2,6 +2,27 @@
 
 const AFFILIATE_TAG = 'easytech020-21';
 
+// ── AMAZON "ALL" OFFCANVAS DRAWER SIDEBAR MENU CONTROLLER ──
+function openAmzDrawer() {
+    const drawer = document.getElementById('amzDrawer');
+    const overlay = document.getElementById('amzDrawerOverlay');
+    if (drawer && overlay) {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeAmzDrawer() {
+    const drawer = document.getElementById('amzDrawer');
+    const overlay = document.getElementById('amzDrawerOverlay');
+    if (drawer && overlay) {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
 // ── LOGO SYNC: Apply logo set by Super Admin Panel ──
 function applyStoredLogo() {
     const savedLogo = localStorage.getItem('easytechLogo');

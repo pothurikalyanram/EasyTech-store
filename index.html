@@ -67,10 +67,95 @@
         </div>
     </header>
 
+    <!-- Amazon Offcanvas Drawer Overlay & Sidebar Menu -->
+    <div id="amzDrawerOverlay" class="amz-drawer-overlay" onclick="closeAmzDrawer()"></div>
+    <div id="amzDrawer" class="amz-drawer">
+        <div class="amz-drawer-header">
+            <span>Hello, Sign in</span>
+            <span class="amz-drawer-close" onclick="closeAmzDrawer()">✕</span>
+        </div>
+        <div class="amz-drawer-body">
+            <!-- Trending Section -->
+            <div class="amz-menu-section">
+                <div class="amz-menu-title">Trending</div>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">Bestsellers</a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">New Releases</a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">Movers & Shakers</a>
+            </div>
+
+            <!-- Digital Content & Devices Section -->
+            <div class="amz-menu-section">
+                <div class="amz-menu-title">Digital Content and Devices</div>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Echo & Alexa</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Fire TV</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Kindle E-Readers & eBooks</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Audible Audiobooks</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Amazon Prime Video</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Amazon Music</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+            </div>
+
+            <!-- Shop by Category Section -->
+            <div class="amz-menu-section">
+                <div class="amz-menu-title">Shop by Category</div>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Mobiles, Computers & Accessories</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>PC Hardware & Components</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Laptops & MacBooks</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>TV, Appliances & Electronics</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+            </div>
+
+            <!-- Programs & Features Section -->
+            <div class="amz-menu-section">
+                <div class="amz-menu-title">Programs & Features</div>
+                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
+                    <span>Great Freedom Deals</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="admin.html" class="amz-menu-item">
+                    <span>Amazon Business</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+                <a href="blog.html" class="amz-menu-item">
+                    <span>Hardware Reviews & Guides</span>
+                    <span class="amz-menu-arrow">&rsaquo;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Blue Sub-Header Category Navigation Bar (Clean Text Style) -->
     <div class="category-nav-bar">
         <div class="cat-nav-container">
-            <div class="cat-nav-item">
+            <div class="cat-nav-item" onclick="openAmzDrawer()" style="cursor:pointer;">
                 <span>All Categories</span>
             </div>
 
