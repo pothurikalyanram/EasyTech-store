@@ -67,100 +67,11 @@
         </div>
     </header>
 
-    <!-- Amazon Offcanvas Drawer Overlay & Sidebar Menu -->
-    <div id="amzDrawerOverlay" class="amz-drawer-overlay" onclick="closeAmzDrawer()"></div>
-    <div id="amzDrawer" class="amz-drawer">
-        <div class="amz-drawer-header">
-            <span>Hello, Sign in</span>
-            <span class="amz-drawer-close" onclick="closeAmzDrawer()">✕</span>
-        </div>
-        <div class="amz-drawer-body">
-            <!-- Trending Section -->
-            <div class="amz-menu-section">
-                <div class="amz-menu-title">Trending</div>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">Bestsellers</a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">New Releases</a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">Movers & Shakers</a>
-            </div>
-
-            <!-- Digital Content & Devices Section -->
-            <div class="amz-menu-section">
-                <div class="amz-menu-title">Digital Content and Devices</div>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Echo & Alexa</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Fire TV</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Kindle E-Readers & eBooks</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Audible Audiobooks</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Amazon Prime Video</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Amazon Music</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-            </div>
-
-            <!-- Shop by Category Section -->
-            <div class="amz-menu-section">
-                <div class="amz-menu-title">Shop by Category</div>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Mobiles, Computers & Accessories</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>PC Hardware & Components</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Laptops & MacBooks</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>TV, Appliances & Electronics</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-            </div>
-
-            <!-- Programs & Features Section -->
-            <div class="amz-menu-section">
-                <div class="amz-menu-title">Programs & Features</div>
-                <a href="#marketplace" class="amz-menu-item" onclick="closeAmzDrawer()">
-                    <span>Great Freedom Deals</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="super-admin-login.html" class="amz-menu-item">
-                    <span>Amazon Business</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-                <a href="blog.html" class="amz-menu-item">
-                    <span>Hardware Reviews & Guides</span>
-                    <span class="amz-menu-arrow">&rsaquo;</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Blue Sub-Header Category Navigation Bar (Clean Text Style) -->
+    <!-- Blue Sub-Header Category Navigation Bar (3 Core Pillars Focus) -->
     <div class="category-nav-bar">
         <div class="cat-nav-container">
-            <div class="cat-nav-item" onclick="openAmzDrawer()" style="cursor:pointer;">
-                <span>All Categories</span>
-            </div>
-
             <div class="cat-nav-item cat-dropdown">
-                <span>PC Components & Accessories</span>
+                <span>🖥️ PC Components & Accessories</span>
                 <div class="cat-dropdown-menu">
                     <a href="#marketplace" class="cat-dropdown-item">Processors (CPUs) & Graphics Cards (GPUs)</a>
                     <a href="#marketplace" class="cat-dropdown-item">Motherboards, RAM & High-Speed SSDs</a>
@@ -170,7 +81,7 @@
             </div>
 
             <div class="cat-nav-item cat-dropdown">
-                <span>Mobile Phones & Accessories</span>
+                <span>📱 Mobile Phones & Accessories</span>
                 <div class="cat-dropdown-menu">
                     <a href="#marketplace" class="cat-dropdown-item">Flagship iPhones & Android Smartphones</a>
                     <a href="#marketplace" class="cat-dropdown-item">5G Budget Performance Smartphones</a>
@@ -180,7 +91,7 @@
             </div>
 
             <div class="cat-nav-item cat-dropdown">
-                <span>Laptops & Accessories</span>
+                <span>💻 Laptops & Accessories</span>
                 <div class="cat-dropdown-menu">
                     <a href="#marketplace" class="cat-dropdown-item">Gaming & Creator Laptops</a>
                     <a href="#marketplace" class="cat-dropdown-item">Apple MacBooks & iPads</a>
@@ -189,118 +100,42 @@
                 </div>
             </div>
 
-            <div class="cat-nav-item">
-                <span>Great Freedom Deals</span>
-            </div>
-
-            <div class="cat-nav-item">
-                <span>Amazon Business</span>
-            </div>
+            <a href="builder.html" class="cat-nav-item"
+                style="margin-left:auto; background:#ffffff; color:#2563eb; padding:6px 16px; border-radius:6px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,0.1);">⚡ Custom PC Builder</a>
         </div>
     </div>
 
     <!-- 1. Top Header Ad Banner (Slot 1 - Invisible by default) -->
     <div id="adSlot1" class="container ad-slot-container"></div>
 
-    <!-- Amazon Hero Banner & 4-Card Floating Grid System -->
-    <section class="amazon-hero-wrapper">
-        <div class="amazon-banner-slide">
-            <div class="banner-content-box">
-                <h1>Great Freedom Sale &bull; Starts Today</h1>
-                <p>Deals Revealed. Big Savings Await across PC Hardware, Mobiles & Laptops.</p>
-                <div class="bank-offer-strip">
-                    <span style="font-weight:900; letter-spacing:0.5px;">HDFC BANK</span>
-                    <span>10% Instant Discount* on Credit Cards & EASYEMI Transactions</span>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">All Electronics & Tech Destination</span>
+                <h1>Discover Premium Tech & Build Your Custom PC <span class="gradient-text">With Live Compatibility</span></h1>
+                <p>Real-time live Amazon prices, verified user ratings, and expert hardware evaluations across all
+                    electronics categories.</p>
+                <div class="hero-actions">
+                    <a href="builder.html" class="btn btn-primary btn-large">Launch PC Studio</a>
+                    <a href="#marketplace" class="btn btn-secondary btn-large">Browse Electronics Catalog</a>
+                </div>
+                <div class="trust-pill-group">
+                    <span class="trust-pill">Verified Amazon Prices</span>
+                    <span class="trust-pill">Secure Checkout</span>
+                    <span class="trust-pill">Authentic Ratings</span>
                 </div>
             </div>
-        </div>
-
-        <!-- 4 Floating Cards Grid Overlapping Hero Banner -->
-        <div class="amazon-cards-grid">
-            <!-- Card 1: Pick up where you left off -->
-            <div class="amz-card">
-                <h3 class="amz-card-title">Pick up where you left off</h3>
-                <div class="amz-2x2-grid">
-                    <a href="product.html?id=mob1" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/81SigAn-rKL._AC_SL1500_.jpg" alt="iPhone Case">
-                        <span>iPhone 16 Magsafe Case...</span>
-                    </a>
-                    <a href="product.html?id=mob2" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/71CX1The91L._AC_SL1500_.jpg" alt="JETech Case">
-                        <span>JETech Silicone Cover...</span>
-                    </a>
-                    <a href="product.html?id=mob1" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/81SigAn-rKL._AC_SL1500_.jpg" alt="Source Case">
-                        <span>Source Case Cover for i...</span>
-                    </a>
-                    <a href="product.html?id=mob2" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/71CX1The91L._AC_SL1500_.jpg" alt="MIDOS Cover">
-                        <span>MIDOS Back Cover Co...</span>
-                    </a>
+            <div class="hero-preview-box">
+                <div class="preview-card">
+                    <div class="preview-badge">PC Studio Environment</div>
+                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80"
+                        alt="Workstation PC Cabinet">
+                    <div class="preview-footer">
+                        <span>NZXT H510 Matte White Case</span>
+                        <a href="builder.html" class="btn btn-sm btn-outline">Customize PC →</a>
+                    </div>
                 </div>
-                <a href="#marketplace" class="amz-card-link">Mobile cases & covers &rsaquo;</a>
-            </div>
-
-            <!-- Card 2: Keep shopping for -->
-            <div class="amz-card">
-                <h3 class="amz-card-title">Keep shopping for</h3>
-                <div class="amz-2x2-grid">
-                    <a href="product.html?id=a2" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/61-59p7lQdL._AC_SL1500_.jpg" alt="Gaming Mouse">
-                        <span>Gaming mice</span>
-                    </a>
-                    <a href="product.html?id=mon1" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/81K9n7U6jKL._AC_SL1500_.jpg" alt="SSD">
-                        <span>Internal solid state d...</span>
-                    </a>
-                    <a href="product.html?id=a1" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/51SKmu2G9FL._AC_SL1500_.jpg" alt="Audio Headphones">
-                        <span>Audio headphones</span>
-                    </a>
-                    <a href="product.html?id=a3" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/61P9W1tUfEL._AC_SL1500_.jpg" alt="Condenser">
-                        <span>Condenser Mics</span>
-                    </a>
-                </div>
-                <a href="#marketplace" class="amz-card-link">View your tech browsing history &rsaquo;</a>
-            </div>
-
-            <!-- Card 3: Continue shopping deals -->
-            <div class="amz-card">
-                <h3 class="amz-card-title">Continue shopping deals</h3>
-                <div class="amz-2x2-grid">
-                    <a href="product.html?id=mon2" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/81WnWzX6jKL._AC_SL1500_.jpg" alt="ARGB Fan">
-                        <span>ARGB Fan Kits</span>
-                    </a>
-                    <a href="product.html?id=mob1" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/81SigAn-rKL._AC_SL1500_.jpg" alt="Fast Cables">
-                        <span>Fast Cables</span>
-                    </a>
-                    <a href="product.html?id=a2" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/61-59p7lQdL._AC_SL1500_.jpg" alt="Charger">
-                        <span>Magsafe Ring</span>
-                    </a>
-                    <a href="product.html?id=mob2" class="amz-grid-item">
-                        <img src="https://m.media-amazon.com/images/I/71CX1The91L._AC_SL1500_.jpg" alt="Cases">
-                        <span>Phone Covers</span>
-                    </a>
-                </div>
-                <a href="#marketplace" class="amz-card-link">See more live deals &rsaquo;</a>
-            </div>
-
-            <!-- Card 4: Amazon Business Bulk Discounts -->
-            <div class="amz-card">
-                <div>
-                    <h3 class="amz-card-title">Bulk discounts + 10% guaranteed cashback!</h3>
-                    <p style="font-size:12px; color:#64748b; margin-bottom:12px;">Create a free business account and save up to 18% with GST invoices.</p>
-                </div>
-                <div style="background:#f8fafc; border-radius:8px; padding:12px; border:1px solid #e2e8f0; text-align:center;">
-                    <span style="display:inline-block; background:#cc0c39; color:white; font-size:10px; font-weight:800; padding:2px 8px; border-radius:4px;">LIMITED TIME DEAL</span>
-                    <strong style="display:block; font-size:12px; color:#0f172a; margin-top:6px;">GAOMON PD1320 Pen Display</strong>
-                    <span style="font-size:11px; color:#eab308;">★ ★ ★ ★ ☆ (88)</span>
-                </div>
-                <a href="super-admin-login.html" class="amz-card-link" style="margin-top:12px;">Register EasyTech Business &rsaquo;</a>
             </div>
         </div>
     </section>

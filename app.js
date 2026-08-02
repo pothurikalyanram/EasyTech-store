@@ -2,27 +2,6 @@
 
 const AFFILIATE_TAG = 'easytech020-21';
 
-// ── AMAZON "ALL" OFFCANVAS DRAWER SIDEBAR MENU CONTROLLER ──
-function openAmzDrawer() {
-    const drawer = document.getElementById('amzDrawer');
-    const overlay = document.getElementById('amzDrawerOverlay');
-    if (drawer && overlay) {
-        drawer.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeAmzDrawer() {
-    const drawer = document.getElementById('amzDrawer');
-    const overlay = document.getElementById('amzDrawerOverlay');
-    if (drawer && overlay) {
-        drawer.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
-
 // ── LOGO SYNC: Apply logo set by Super Admin Panel ──
 function applyStoredLogo() {
     const savedLogo = localStorage.getItem('easytechLogo');
@@ -772,13 +751,41 @@ function openBlogModal(postIndex) {
     modal.style.display = 'flex';
 }
 
-// E-Commerce Quick View Modal & Amazon Detail View
+// E-Commerce Quick View Modal
 function openQuickView(productId) {
     const p = products.find(prod => prod.id === productId);
     if (!p) return;
 
-    // Direct navigate to full Product Detail Page product.html
-    window.location.href = `product.html?id=${p.id}`;
+    const modal = document.getElementById('quickViewModal');
+    const body = document.getElementById('quickViewBody');
+    if (!modal || !body) return;
+
+    const isOutOfStock = p.outOfStock || p.inStock === false;
+    const badgeHTML = isOutOfStock
+        ? `<span class="badge-recommend" style="background:#fef2f2; color:#dc2626; border:1px solid #fecaca;">Out of Stock on Amazon India</span>`
+        : `<span class="badge-recommend">${p.badge || 'Verified Tech'}</span>`;
+
+    const buttonHTML = isOutOfStock
+        ? `<button disabled class="btn btn-large width-100" style="background:#e2e8f0; color:#64748b; cursor:not-allowed; border:none; font-weight:700;">Currently Unavailable on Amazon 🛒</button>`
+        : `<a href="${getAmazonLink(p)}" target="_blank" class="btn btn-primary btn-large width-100">Buy Now on Amazon 🛒</a>`;
+
+    body.innerHTML = `
+        <div class="quick-view-grid">
+            <div>
+                <img src="${p.image}" class="quick-view-img" alt="${p.title}">
+            </div>
+            <div>
+                ${badgeHTML}
+                <h3 style="font-size:18px; margin:10px 0;">${p.title}</h3>
+                <div class="product-rating" style="margin-bottom:12px;">${formatRatingHTML(p.rating)}</div>
+                <p style="font-size:22px; font-weight:700; color:#0f172a; margin-bottom:16px;">${p.price} <span style="font-size:11px; color:${isOutOfStock ? '#dc2626' : '#059669'};">${isOutOfStock ? '❌ Out of Stock on Amazon India' : '✓ Verified Amazon Live Price'}</span></p>
+                <p style="font-size:13px; color:#64748b; margin-bottom:20px;">${isOutOfStock ? 'This item is currently out of stock on Amazon India. Check back later for restock updates.' : 'Includes Amazon India fulfillment, official manufacturer warranty, and verified customer reviews.'}</p>
+                ${buttonHTML}
+            </div>
+        </div>
+    `;
+
+    modal.style.display = 'flex';
 }
 
 function setupQuickView() {
