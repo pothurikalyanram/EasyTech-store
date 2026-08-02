@@ -1,0 +1,10 @@
+{
+  "name": "easytech-store",
+  "version": "1.0.0",
+  "description": "EasyTech E-Commerce Platform",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static build ready'"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /super-admin-login.html
+Disallow: /super-admin-master.html
+
+Sitemap: https://easytechpc.store/sitemap.xml

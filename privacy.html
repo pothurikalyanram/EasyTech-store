@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | EasyTech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><span class="logo-accent">Easy</span>Tech</a>
+            <a href="index.html" class="btn btn-sm btn-outline">Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container section" style="max-width:800px;">
+        <h2>Privacy Policy</h2>
+        <p style="color:var(--text-muted); font-size:13px; margin-bottom:20px;">Last updated: August 1, 2026</p>
+        
+        <h3>1. Information We Collect</h3>
+        <p>EasyTech (easytechpc.store) respects your privacy. We do not collect or store personal user passwords or credit card information. All transactions are handled securely by Amazon India.</p>
+        
+        <br>
+        <h3>2. Cookies & Tracking</h3>
+        <p>We use standard cookies and analytics to improve site performance and to verify affiliate referral sales via Amazon India. Third-party vendors, including Google AdSense, may use cookies to serve ads based on prior visits.</p>
+        
+        <br>
+        <h3>3. Contact Us</h3>
+        <p>If you have any questions regarding this Privacy Policy, you may contact us via our official media channels.</p>
+    </div>
+    <script>
+        // Apply custom logo set by Super Admin Panel
+        (function() {
+            var savedLogo = localStorage.getItem('easytechLogo');
+            if (!savedLogo) return;
+            document.querySelectorAll('a.logo').forEach(function(link) {
+                link.innerHTML = '<img src="' + savedLogo + '" alt="EasyTech Logo" style="max-height:44px; max-width:160px; object-fit:contain; vertical-align:middle; display:inline-block;">';
+                link.style.display = 'inline-flex';
+                link.style.alignItems = 'center';
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyTech Master Control Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── EasyTech Brand Color System ── */
+        /* Primary: #0f172a (Navy) | Accent: #2563eb (Blue) | Green: #059669 */
+
+        body {
+            background: #f8fafc;
+        }
+
+        /* ── Login Page ── */
+        .admin-login-section {
+            min-height: calc(100vh - 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #f8fafc;
+        }
+
+        .admin-login-box {
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+        }
+
+        /* Blue accent top stripe — matching category nav bar */
+        .login-brand-bar {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .login-brand-bar .brand-icon {
+            width: 44px; height: 44px;
+            background: #2563eb;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .login-brand-bar .brand-text { color: white; }
+        .login-brand-bar .brand-text strong {
+            display: block;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+        .login-brand-bar .brand-text strong em { color: #60a5fa; font-style: normal; }
+        .login-brand-bar .brand-text span {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .login-form-wrap {
+            padding: 28px 32px 32px;
+        }
+
+        .login-form-wrap h2 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .login-form-wrap .login-sub {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 7px;
+            color: #475569;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: inherit;
+            color: #0f172a;
+            background: #f8fafc;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .form-group input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+            background: #ffffff;
+        }
+
+        /* Step indicator dots */
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 22px;
+        }
+        .step-dot-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+        .step-dot-item.active { color: #2563eb; }
+        .step-dot-item .dot {
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #94a3b8;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; font-weight: 700;
+        }
+        .step-dot-item.active .dot {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+        }
+        .step-line-sep {
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 0 10px;
+        }
+
+        /* ── Dashboard ── */
+        .admin-dashboard {
+            display: none;
+            padding: 36px 0;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            background: white;
+            padding: 20px 24px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 4px rgba(15,23,42,0.05);
+        }
+        .dashboard-header h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.4px;
+        }
+        .session-info {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+        .session-info span { color: #2563eb; font-weight: 600; }
+
+        /* Master Control Bar — brand navy */
+        .master-switch-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f172a 100%);
+            color: white;
+            padding: 26px 28px;
+            border-radius: 14px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(37,99,235,0.2);
+            box-shadow: 0 8px 24px rgba(15,23,42,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .master-switch-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2563eb, #60a5fa, #2563eb);
+        }
+        .master-switch-box h3 {
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .master-switch-box .status-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(5,150,105,0.2);
+            border: 1px solid rgba(52,211,153,0.3);
+            color: #34d399;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-top: 6px;
+        }
+        .master-switch-box .status-chip::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: #34d399;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .master-switch-box p {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+
+        /* Engine Grid */
+        .engine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .engine-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 18px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .engine-card:hover {
+            border-color: #bfdbfe;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+        }
+        .engine-num {
+            display: inline-block;
+            width: 22px; height: 22px;
+            background: #eff6ff;
+            color: #2563eb;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            text-align: center;
+            line-height: 22px;
+            margin-bottom: 4px;
+        }
+
+        /* Toggle switch — green when active */
+        .switch-toggle {
+            position: relative;
+            display: inline-block;
+            width: 46px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .switch-toggle input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            transition: .28s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .28s;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        input:checked + .slider { background-color: #059669; }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        /* YouTube Pipeline */
+        .youtube-pipeline-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: 0 1px 4px rgba(15,23,42,0.04);
+        }
+        .youtube-pipeline-box h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+        .youtube-pipeline-box p {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .yt-video-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 16px;
+            border-radius: 10px;
+            margin-top: 16px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .yt-thumb {
+            width: 130px;
+            height: 75px;
+            background: linear-gradient(135deg, #0f172a, #1e3a5f);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Section label */
+        .section-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-accent">Easy</span>Tech <span class="badge-tag">ADMIN PORTAL</span>
+            </a>
+            <a href="index.html" class="btn btn-sm btn-outline">Store Front</a>
+        </div>
+    </header>
+
+    <!-- Step 1 & 2 Login Screen -->
+    <div id="loginSection" class="admin-login-section">
+        <div class="admin-login-box">
+            <!-- Brand bar -->
+            <div class="login-brand-bar">
+                <div class="brand-icon">⚙️</div>
+                <div class="brand-text">
+                    <strong><em>Easy</em>Tech</strong>
+                    <span>ADMIN CONTROL PORTAL</span>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="login-form-wrap">
+                <!-- Circular Avatar & Access Badge -->
+                <div style="text-align: center; margin-bottom: 24px;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: #eff6ff; border: 2px solid #bfdbfe; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(37,99,235,0.12);">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 12px; letter-spacing: -0.3px;">Admin Access</h3>
+                    <div style="display: inline-block; background: #f8fafc; color: #64748b; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; margin-top: 6px; border: 1px solid #e2e8f0;">
+                        Only Admin Has Access
+                    </div>
+                </div>
+
+                <form id="loginForm">
+                    <input type="hidden" id="adminEmail" value="pothurikalyanram@gmail.com">
+
+                    <div class="form-group" id="otpGroup" style="display: none; margin-bottom:20px;">
+                        <label style="font-size:11px; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:0.5px;">Enter 6-Digit Passkey</label>
+                        <input type="text" id="adminOtp" placeholder="Enter 6-digit passkey" maxlength="6" autocomplete="one-time-code" style="font-size:16px; letter-spacing:4px; text-align:center; font-weight:700; border:1.5px solid #cbd5e1; border-radius:8px; padding:12px;">
+                    </div>
+
+                    <button type="submit" id="loginSubmitBtn" class="btn btn-primary width-100" style="font-size:14px; padding:13px; border-radius:8px; font-weight:700;">
+                        Send Security Passkey
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Master Dashboard -->
+    <div class="container admin-dashboard" id="dashboardSection">
+        <div class="dashboard-header">
+            <div>
+                <h2>Master Control Portal</h2>
+                <p class="session-info">Session Active: <span id="loggedUser">pothurikalyanram@gmail.com</span></p>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <button id="openProfileBtn" class="btn btn-secondary btn-sm" style="font-size:12px;">👤 Admin Profile</button>
+                <button id="logoutBtn" class="btn btn-outline btn-sm">Log Out</button>
+            </div>
+        </div>
+
+        <!-- Admin Profile Modal / Settings Box -->
+        <div id="profileCard" style="display:none; background:white; border:1px solid #e2e8f0; border-radius:12px; padding:20px 24px; margin-bottom:24px; box-shadow:0 4px 12px rgba(15,23,42,0.06);">
+            <h3 style="font-size:16px; font-weight:700; color:#0f172a; margin-bottom:6px;">👤 Administrator Profile Settings</h3>
+            <p style="font-size:12px; color:#64748b; margin-bottom:16px;">Update your registered administrator email address for OTP passkey delivery.</p>
+            <div style="display:flex; gap:12px; align-items:center; max-width:500px;">
+                <input type="email" id="profileEmailInput" value="pothurikalyanram@gmail.com" style="flex:1; padding:10px 14px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:13px;" required>
+                <button id="saveProfileEmailBtn" class="btn btn-primary" style="font-size:13px; padding:10px 18px;">Save New Email</button>
+            </div>
+            <span id="profileStatusMsg" style="font-size:12px; font-weight:600; display:none; margin-top:8px;"></span>
+        </div>
+
+        <!-- Master Switch -->
+        <div class="master-switch-box">
+            <div>
+                <h3>System Status: Active</h3>
+                <div class="status-chip">All Systems Online</div>
+                <p>Toggle all 7 serverless automation engines simultaneously.</p>
+            </div>
+            <button id="masterToggleBtn" class="btn btn-secondary btn-large">Stop All Systems</button>
+        </div>
+
+        <!-- Engine Switches -->
+        <div class="section-label">Automation Services</div>
+        <div class="engine-grid">
+            <div class="engine-card">
+                <div>
+                    <strong style="font-size:14px;">1. AI Content Engine</strong>
+                    <p style="font-size: 11px; color: var(--text-muted);">Gemini 1500-word daily articles</p>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" class="engine-chk" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="engine-card">
+                <div>
+                    <strong style="font-size:14px;">2. Amazon Price Syncer</strong>
+                    <p style="font-size: 11px; color: var(--text-muted);">PA API product sync (6-hour interval)</p>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" class="engine-chk" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="engine-card">
+                <div>
+                    <strong style="font-size:14px;">3. Media & Asset Syncer</strong>
+                    <p style="font-size: 11px; color: var(--text-muted);">Image compression & accessibility tags</p>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" class="engine-chk" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="engine-card">
+                <div>
+                    <strong style="font-size:14px;">4. Cabinet Catalog Service</strong>
+                    <p style="font-size: 11px; color: var(--text-muted);">PC Builder component catalog updates</p>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" class="engine-chk" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="engine-card">
+                <div>
+                    <strong style="font-size:14px;">5. Technical SEO Service</strong>
+                    <p style="font-size: 11px; color: var(--text-muted);">Automated Schema & OpenGraph markup</p>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" class="engine-chk" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="engine-card">
+                <div>
+                    <strong style="font-size:14px;">6. Search Engine Submitter</strong>
+                    <p style="font-size: 11px; color: var(--text-muted);">Instant submission via Google API</p>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" class="engine-chk" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="engine-card">
+                <div>
+                    <strong style="font-size:14px;">7. Sitemap Generator</strong>
+                    <p style="font-size: 11px; color: var(--text-muted);">Dynamic sitemap.xml management</p>
+                </div>
+                <label class="switch-toggle">
+                    <input type="checkbox" class="engine-chk" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- YouTube Video Approval Pipeline -->
+        <div class="youtube-pipeline-box">
+            <h3 style="font-size:16px;">Media Distribution Pipeline (easytechtalks360)</h3>
+            <p style="font-size: 12px; color: var(--text-muted);">Review auto-generated media scripts and approve for publication.</p>
+
+            <div class="yt-video-card">
+                <div class="yt-thumb">PREVIEW</div>
+                <div style="flex:1;">
+                    <h4 style="font-size: 14px;">"Workstation Build Breakdown: ₹50,000 Gaming PC"</h4>
+                    <p style="font-size: 12px; color: var(--text-muted);">58 Seconds • Captions Included • AI Disclosure Tag Active</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" id="approveYtBtn">Approve & Publish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

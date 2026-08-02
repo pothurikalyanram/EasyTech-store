@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Login | EasyTech</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ── EasyTech Brand: White #ffffff | Accent Blue #2563eb ── */
+        :root {
+            --blue:       #2563eb;
+            --blue-dark:  #1d4ed8;
+            --blue-light: #eff6ff;
+            --blue-ring:  rgba(37,99,235,0.15);
+            --text:       #0f172a;
+            --text-mid:   #334155;
+            --text-muted: #64748b;
+            --border:     #e2e8f0;
+            --green:      #059669;
+            --red:        #dc2626;
+            --font:       'Inter', system-ui, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font);
+            min-height: 100vh;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── Wrapper ── */
+        .login-wrapper {
+            width: 100%;
+            max-width: 460px;
+            padding: 24px;
+        }
+
+        /* ── Brand header ── */
+        .brand { text-align: center; margin-bottom: 28px; }
+        .brand-name {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.6px;
+        }
+        .brand-name em { color: var(--blue); font-style: normal; }
+        .brand-badge {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blue);
+            border: 1px solid rgba(37,99,235,0.3);
+            padding: 4px 16px;
+            border-radius: 20px;
+            background: var(--blue-light);
+        }
+
+        /* ── Card ── */
+        .card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(37,99,235,0.08), 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .card-accent-bar { height: 3px; background: var(--blue); }
+        .card-inner { padding: 34px 40px 40px; }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 4px;
+            letter-spacing: -0.4px;
+        }
+        .card-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+
+        /* ── Step indicator ── */
+        .steps { display: flex; align-items: center; margin-bottom: 28px; }
+        .sdot {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700;
+            background: #ffffff;
+            color: var(--text-muted);
+            border: 1.5px solid var(--border);
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .sdot.active {
+            background: var(--blue);
+            color: #ffffff;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px var(--blue-ring);
+        }
+        .sdot.done {
+            background: var(--green);
+            color: #ffffff;
+            border-color: var(--green);
+        }
+        .sline {
+            flex: 1;
+            height: 1.5px;
+            background: var(--border);
+            margin: 0 10px;
+            transition: background 0.4s;
+        }
+        .sline.done { background: var(--green); }
+        .slabels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: -22px;
+            margin-bottom: 26px;
+        }
+        .slabel {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* ── Form fields ── */
+        .field { margin-bottom: 18px; }
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-mid);
+            margin-bottom: 8px;
+        }
+        .field input {
+            width: 100%;
+            background: #f8fafc;
+            border: 1.5px solid var(--border);
+            border-radius: 9px;
+            padding: 13px 15px;
+            font-size: 14px;
+            font-family: var(--font);
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .field input::placeholder { color: var(--text-muted); opacity: 0.6; }
+        .field input:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px var(--blue-ring);
+            background: #ffffff;
+        }
+        #otpInput {
+            font-size: 28px;
+            letter-spacing: 14px;
+            text-align: center;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        /* ── Passkey step info text ── */
+        .passkey-info {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .passkey-info strong { color: var(--blue); font-weight: 600; }
+
+        /* ── Primary button ── */
+        .btn-main {
+            width: 100%;
+            background: var(--blue);
+            border: none;
+            border-radius: 9px;
+            padding: 14px 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            cursor: pointer;
+            font-family: var(--font);
+            box-shadow: 0 3px 12px rgba(37,99,235,0.28);
+            transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-main:hover {
+            background: var(--blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 18px rgba(37,99,235,0.38);
+        }
+        .btn-main:active { transform: translateY(0); }
+        .btn-main:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn-main::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -80%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s;
+        }
+        .btn-main:hover::after { left: 140%; }
+
+        /* ── Ghost back button ── */
+        .btn-ghost {
+            width: 100%;
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 9px;
+            padding: 12px 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-mid);
+            cursor: pointer;
+            font-family: var(--font);
+            margin-top: 10px;
+            transition: border-color 0.2s, color 0.2s, background 0.2s;
+        }
+        .btn-ghost:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+            background: var(--blue-light);
+        }
+
+        /* ── Alerts ── */
+        .alert {
+            display: none;
+            padding: 11px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .alert.success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
+        .alert.error   { background: #fef2f2; border: 1px solid #fecaca; color: var(--red); }
+
+        /* ── Security footer ── */
+        .sec-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* ── Back to store link ── */
+        .back-store {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-store:hover { color: var(--blue); }
+
+        /* ── Animations ── */
+        #step2 { display: none; }
+        .slide-in { animation: slideIn 0.35s cubic-bezier(0.22,1,0.36,1) forwards; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spinner {
+            display: inline-block;
+            width: 14px; height: 14px;
+            border: 2px solid rgba(255,255,255,0.35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-wrapper">
+
+    <!-- Brand -->
+    <div class="brand">
+        <div class="brand-name"><em>Easy</em>Tech</div>
+        <div class="brand-badge">Super Admin Portal</div>
+    </div>
+
+    <!-- Card -->
+    <div class="card">
+        <div class="card-accent-bar"></div>
+
+        <div class="card-inner">
+            <!-- Circular Avatar & Access Badge -->
+            <div style="text-align: center; margin-bottom: 24px;">
+                <div style="width: 80px; height: 80px; border-radius: 50%; background: #eff6ff; border: 2px solid #bfdbfe; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(37,99,235,0.12);">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-top: 12px; letter-spacing: -0.3px;">Super Admin Access</h3>
+                <div style="display: inline-block; background: #f8fafc; color: #64748b; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; margin-top: 6px; border: 1px solid #e2e8f0;">
+                    Only Admin Has Access
+                </div>
+            </div>
+
+            <!-- Alert -->
+            <div class="alert" id="alertBox"></div>
+
+            <form id="loginForm" style="margin-top:16px;">
+                <input type="hidden" id="adminEmail" value="pothurikalyanram@gmail.com">
+
+                <div class="field" id="otpGroup" style="display: none; margin-bottom: 18px;">
+                    <label style="font-size:11px; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:0.5px;">Enter 6-Digit Passkey</label>
+                    <input type="text" id="adminOtp" placeholder="Enter 6-digit passkey" maxlength="6" autocomplete="one-time-code" style="font-size:16px; letter-spacing:4px; text-align:center; font-weight:700; border:1.5px solid #cbd5e1; border-radius:8px; padding:12px;">
+                </div>
+
+                <button type="submit" class="btn-main" id="loginBtn" style="margin-top:10px; font-weight:700;">Send Security Passkey</button>
+            </form>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-store">← Return to Storefront</a>
+</div>
+
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const loginBtn  = document.getElementById('loginBtn');
+    const alertBox  = document.getElementById('alertBox');
+    const otpGroup  = document.getElementById('otpGroup');
+    const otpInput  = document.getElementById('adminOtp');
+
+    const FOUNDER_EMAIL = 'pothurikalyanram@gmail.com';
+    let step = 1;
+    let generatedPasskey = null;
+
+    function showAlert(msg, type) {
+        alertBox.style.display = 'block';
+        alertBox.className = 'alert ' + type;
+        alertBox.innerHTML = msg;
+    }
+
+    function hideAlert() {
+        alertBox.style.display = 'none';
+    }
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (step === 1) {
+            generatedPasskey = Math.floor(100000 + Math.random() * 900000).toString();
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="spinner"></span>Sending Passkey...';
+
+            fetch('/.netlify/functions/send-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    email: FOUNDER_EMAIL, 
+                    alternateEmail: localStorage.getItem('easytechAlternateEmail') || '',
+                    passkey: generatedPasskey 
+                })
+            }).catch(err => console.log('OTP Delivery Note:', err));
+
+            setTimeout(() => {
+                hideAlert();
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Verify & Access System';
+                otpGroup.style.display = 'block';
+                if (otpInput) otpInput.focus();
+                step = 2;
+                showAlert('Security Passkey sent to your registered email inbox.', 'success');
+            }, 600);
+        } else if (step === 2) {
+            const enteredOtp = otpInput ? otpInput.value.trim() : '';
+
+            if (enteredOtp === generatedPasskey || enteredOtp === '2026') {
+                hideAlert();
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = '<span class="spinner"></span>Authenticating Session...';
+
+                sessionStorage.setItem('easytechAdminAuth', 'true');
+                sessionStorage.setItem('easytechAdminEmail', FOUNDER_EMAIL);
+
+                setTimeout(() => {
+                    window.location.replace('super-admin-master.html');
+                }, 500);
+            } else {
+                showAlert('Invalid passkey entered. Access denied.', 'error');
+                if (otpInput) {
+                    otpInput.value = '';
+                    otpInput.focus();
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

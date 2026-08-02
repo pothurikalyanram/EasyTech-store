@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Workstation Studio | EasyTech Custom PC Creator</title>
+    <meta name="description" content="Configure your desktop computer with real-time component prices, verified specs, and Amazon India integration.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .builder-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 20px;
+            min-height: 80vh;
+            margin-top: 20px;
+        }
+
+        .canvas-box {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        #pcCanvas {
+            width: 100%;
+            height: 100%;
+            min-height: 540px;
+            cursor: grab;
+        }
+
+        #pcCanvas:active {
+            cursor: grabbing;
+        }
+
+        .studio-controls-bar {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .studio-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            transition: all 0.15s ease;
+        }
+
+        .studio-btn:hover {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+        }
+
+        .builder-sidebar {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-header {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .comp-group {
+            margin-bottom: 16px;
+        }
+
+        .comp-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .comp-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            outline: none;
+            background: #ffffff;
+            color: #0f172a;
+        }
+
+        .summary-box {
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .price-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .total-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-blue);
+        }
+
+        .compat-badge {
+            display: inline-block;
+            background: #ecfdf5;
+            color: #047857;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .builder-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="affiliate-disclosure-bar">
+        <span>EasyTech is reader-supported. Purchases made through links on our site earn an affiliate commission from Amazon India.</span>
+    </div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-accent">Easy</span>Tech <span class="badge-tag">PC STUDIO</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="blog.html">Reviews & Guides</a>
+
+                <!-- Flag Language Selector -->
+                <div class="lang-selector">
+                    <button class="lang-btn" id="langBtn">
+                        <img src="https://flagcdn.com/w40/in.png" class="flag-icon-img" alt="India Flag"> <span id="selectedLangCode">EN</span> ▼
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <div class="lang-opt" data-code="EN"><img src="https://flagcdn.com/w40/in.png" class="flag-icon-img" alt="India"> EN - English</div>
+                        <div class="lang-opt" data-code="TE"><img src="https://flagcdn.com/w40/in.png" class="flag-icon-img" alt="India"> TE - Telugu (తెలుగు)</div>
+                        <div class="lang-opt" data-code="TA"><img src="https://flagcdn.com/w40/in.png" class="flag-icon-img" alt="India"> TA - Tamil (தமிழ்)</div>
+                        <div class="lang-opt" data-code="KA"><img src="https://flagcdn.com/w40/in.png" class="flag-icon-img" alt="India"> KA - Kannada (ಕನ್ನಡ)</div>
+                        <div class="lang-opt" data-code="HI"><img src="https://flagcdn.com/w40/in.png" class="flag-icon-img" alt="India"> HI - Hindi (हिंदी)</div>
+                        <div class="lang-opt" data-code="NE"><img src="https://flagcdn.com/w40/in.png" class="flag-icon-img" alt="India"> NE - Nepali (नेपाली)</div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blue Sub-Header Category Navigation Bar -->
+    <div class="category-nav-bar">
+        <div class="cat-nav-container">
+            <a href="index.html#marketplace" class="cat-nav-item">Audio & Headphones</a>
+            <a href="index.html#marketplace" class="cat-nav-item">Laptops & Tablets</a>
+            <a href="index.html#marketplace" class="cat-nav-item">Smartwatches</a>
+            <a href="index.html#marketplace" class="cat-nav-item">Power & Chargers</a>
+            <a href="index.html#marketplace" class="cat-nav-item">Gaming Gear</a>
+            <a href="index.html#marketplace" class="cat-nav-item">PC Components</a>
+            <a href="builder.html" class="cat-nav-item" style="margin-left:auto; background:#ffffff; color:#2563eb; padding:4px 12px; border-radius:4px; font-weight:700;">Custom PC Builder</a>
+        </div>
+    </div>
+
+    <!-- Main Builder Workspace -->
+    <div class="container">
+        <div class="builder-container">
+            <!-- 2D PC Cabinet Showcase Box -->
+            <div class="canvas-box" style="background:#0a0f1d; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                <div style="width:100%; height:100%; min-height:540px; display:flex; align-items:center; justify-content:center; padding:32px;">
+                    <img id="cabinet2dImg" src="file:///C:/Users/pothu/.gemini/antigravity-ide/brain/1a214653-4aad-4051-9d49-f9e379e05991/thermaltake_view_200_2d_1785598526604.png" alt="2D PC Cabinet View" style="max-width:90%; max-height:460px; object-fit:contain; border-radius:12px; filter:drop-shadow(0 15px 30px rgba(0,0,0,0.6)); transition:all 0.3s ease;">
+                </div>
+                
+                <!-- Floating Spec Overlay Badge -->
+                <div id="pcSpecOverlay" style="position:absolute; bottom:20px; left:20px; background:rgba(15,23,42,0.9); color:#ffffff; padding:10px 16px; border-radius:10px; font-size:12px; font-weight:600; border:1px solid rgba(255,255,255,0.15); backdrop-filter:blur(6px); pointer-events:none; z-index:20; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                    <strong id="cabinetTitleDisplay" style="display:block; font-size:14px; color:#ffffff;">Thermaltake View 200 ARGB</strong>
+                    <span id="cabinetSubDisplay" style="font-size:12px; color:#38bdf8;">Dual-Chamber Tempered Glass Chassis</span>
+                </div>
+            </div>
+
+            <!-- Components Sidebar -->
+            <div class="builder-sidebar">
+                <div class="step-header">
+                    <span>Configure Components</span>
+                    <span class="compat-badge">Verified Compatibility</span>
+                </div>
+
+                <!-- 1. Cabinet Selector -->
+                <div class="comp-group">
+                    <label class="comp-label">1. PC Cabinet / Case</label>
+                    <select id="cabinetSelect" class="comp-select">
+                        <option value="c1" data-price="8490">Thermaltake View 200 ARGB (Dual-Chamber Glass) - ₹8,490</option>
+                        <option value="c2" data-price="7490">NZXT H510 Mid-Tower (Matte Black) - ₹7,490</option>
+                        <option value="c3" data-price="6890">Antec DF700 Flux (High-Airflow Mesh) - ₹6,890</option>
+                        <option value="c4" data-price="13490">Lian Li O11 Dynamic (Snow White Glass) - ₹13,490</option>
+                    </select>
+                </div>
+
+                <!-- 2. Motherboard Selector -->
+                <div class="comp-group">
+                    <label class="comp-label">2. Motherboard</label>
+                    <select id="moboSelect" class="comp-select">
+                        <option value="m1" data-price="15990">MSI MAG B760 Mortar WiFi (ATX Dark PCB) - ₹15,990</option>
+                        <option value="m2" data-price="21490">ASUS ROG Strix B650-A Gaming (Silver Heatsinks) - ₹21,490</option>
+                        <option value="m3" data-price="28990">Gigabyte Z790 AORUS Elite (Metallic Armor) - ₹28,990</option>
+                    </select>
+                </div>
+
+                <!-- 3. CPU Selector -->
+                <div class="comp-group">
+                    <label class="comp-label">3. Processor & Cooler (CPU)</label>
+                    <select id="cpuSelect" class="comp-select">
+                        <option value="cpu1" data-price="14200">Intel Core i5-12400F + Tower Air Cooler - ₹14,200</option>
+                        <option value="cpu2" data-price="37990">AMD Ryzen 7 7800X3D + 360mm Liquid AIO - ₹37,990</option>
+                    </select>
+                </div>
+
+                <!-- 4. GPU Selector -->
+                <div class="comp-group">
+                    <label class="comp-label">4. Graphics Card (GPU)</label>
+                    <select id="gpuSelect" class="comp-select">
+                        <option value="gpu1" data-price="25490">MSI GeForce RTX 4060 8GB Ventus - ₹25,490</option>
+                        <option value="gpu2" data-price="61499">NVIDIA GeForce RTX 4070 Super 12GB - ₹61,499</option>
+                    </select>
+                </div>
+
+                <!-- 5. RAM Selector -->
+                <div class="comp-group">
+                    <label class="comp-label">5. Memory (RAM)</label>
+                    <select id="ramSelect" class="comp-select">
+                        <option value="ram1" data-price="3800">Corsair Vengeance 16GB (8x2) DDR4 - ₹3,800</option>
+                        <option value="ram2" data-price="9990">G.Skill Trident Z5 32GB (16x2) DDR5 RGB - ₹9,990</option>
+                    </select>
+                </div>
+
+                <!-- 6. Storage Selector -->
+                <div class="comp-group">
+                    <label class="comp-label">6. Storage (SSD)</label>
+                    <select id="storageSelect" class="comp-select">
+                        <option value="s1" data-price="5400">Crucial P3 1TB NVMe PCIe 3.0 SSD - ₹5,400</option>
+                        <option value="s2" data-price="9200">Samsung 980 PRO 1TB PCIe 4.0 SSD - ₹9,200</option>
+                    </select>
+                </div>
+
+                <!-- 7. Power Supply Selector (PSU) -->
+                <div class="comp-group">
+                    <label class="comp-label">7. Power Supply Unit (PSU)</label>
+                    <select id="psuSelect" class="comp-select">
+                        <option value="psu1" data-price="8990">Corsair RM750e 750W 80+ Gold - ₹8,990</option>
+                        <option value="psu2" data-price="5200">Cooler Master MWE 650W 80+ Bronze - ₹5,200</option>
+                    </select>
+                </div>
+
+                <!-- Build Summary & Checkout -->
+                <div class="summary-box">
+                    <div class="price-total-row">
+                        <span>Total Configuration:</span>
+                        <span class="total-price" id="totalPrice">₹82,360</span>
+                    </div>
+                    <button id="buyAllBtn" class="btn btn-primary btn-large width-100">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="builder.js"></script>
+</body>
+</html>
