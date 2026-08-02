@@ -606,9 +606,37 @@ function renderCatalog() {
             ? `<span class="product-badge" style="background:#dc2626; color:#ffffff; font-weight:700;">Out of Stock</span>`
             : (p.badge ? `<span class="product-badge">${p.badge}</span>` : '');
 
+// Live Synchronized Financial Vault Click & Commission Tracker Engine
+function recordVaultProductClick(productTitle, priceValue) {
+    let vault = { clicks: 0, grossSales: 0, netCommission: 0, orders: 0 };
+    try {
+        const raw = localStorage.getItem('easytechFinancialVault');
+        if (raw) vault = JSON.parse(raw) || vault;
+    } catch(e) {}
+
+    let numericVal = 0;
+    if (typeof priceValue === 'number' && !isNaN(priceValue)) {
+        numericVal = priceValue;
+    } else if (typeof priceValue === 'string') {
+        numericVal = parseInt(priceValue.replace(/[^0-9]/g, '')) || 5000;
+    } else {
+        numericVal = 5000;
+    }
+
+    const estCommission = Math.round(numericVal * 0.055);
+
+    vault.clicks = (vault.clicks || 0) + 1;
+    vault.grossSales = (vault.grossSales || 0) + numericVal;
+    vault.netCommission = (vault.netCommission || 0) + estCommission;
+    vault.orders = (vault.orders || 0) + 1;
+
+    localStorage.setItem('easytechFinancialVault', JSON.stringify(vault));
+    window.dispatchEvent(new Event('storage'));
+}
+
         const buttonHTML = isOutOfStock
             ? `<button disabled onclick="event.stopPropagation()" class="btn width-100" style="background:#e2e8f0; color:#64748b; cursor:not-allowed; border:none; font-weight:700;">Currently Unavailable</button>`
-            : `<a href="${getAmazonLink(p)}" target="_blank" onclick="event.stopPropagation()" class="btn btn-primary width-100">Buy Now</a>`;
+            : `<a href="${getAmazonLink(p)}" target="_blank" onclick="event.stopPropagation(); recordVaultProductClick('${(p.title || '').replace(/'/g, "\\'")}', ${p.numericPrice || 5000});" class="btn btn-primary width-100">Buy Now</a>`;
 
         return `
         <div class="product-card" onclick="openQuickView('${p.id}')" style="${isOutOfStock ? 'opacity:0.85;' : ''}">
