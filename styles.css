@@ -1359,3 +1359,152 @@ a {
         font-size: 11.5px !important;
     }
 }
+
+/* ── AMAZON HOME LAYOUT SYSTEM: SALE BANNER & 4-CARD FLOATING GRID ── */
+.amazon-hero-wrapper {
+    position: relative;
+    background: linear-gradient(135deg, #e3e6e6 0%, #eaeded 100%);
+    padding-bottom: 220px;
+    overflow: hidden;
+}
+
+.amazon-banner-slide {
+    background: linear-gradient(135deg, #ff5722 0%, #ff8f00 50%, #e65100 100%);
+    color: #ffffff;
+    padding: 36px 32px 180px;
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+}
+
+.banner-content-box h1 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.banner-content-box p {
+    font-size: 17px;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.bank-offer-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    color: #0f172a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* 4-Card Floating Grid Overlapping Hero */
+.amazon-cards-grid {
+    max-width: 1440px;
+    margin: -160px auto 40px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+.amz-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.amz-card-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 14px;
+    line-height: 1.3;
+}
+
+.amz-2x2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.amz-grid-item {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.amz-grid-item img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    background: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #f1f5f9;
+    padding: 6px;
+    transition: transform 0.2s;
+}
+
+.amz-grid-item:hover img {
+    transform: scale(1.04);
+}
+
+.amz-grid-item span {
+    font-size: 11px;
+    color: #334155;
+    font-weight: 500;
+    margin-top: 4px;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.amz-card-link {
+    font-size: 12px;
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: auto;
+}
+
+.amz-card-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1100px) {
+    .amazon-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: -100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .amazon-cards-grid {
+        grid-template-columns: 1fr;
+        margin-top: -60px;
+    }
+    .banner-content-box h1 {
+        font-size: 24px;
+    }
+}
