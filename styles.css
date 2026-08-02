@@ -145,12 +145,19 @@ a {
     font-weight: 600;
 }
 
-/* Blue Sub-Header Navigation Bar - 1-Inch Side Padding */
+/* Blue Sub-Header Navigation Bar - Fluid Auto-Alignment across Mobile/Tablet/PC */
 .category-nav-bar {
     background-color: var(--accent-blue);
     color: white;
     width: 100%;
     border-bottom: 1px solid #1d4ed8;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.category-nav-bar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
 }
 
 .cat-nav-container {
@@ -159,21 +166,32 @@ a {
     padding: 0 32px;
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
     font-size: 13px;
     font-weight: 600;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.cat-nav-container::-webkit-scrollbar {
+    display: none;
 }
 
 .cat-nav-item {
-    padding: 11px 0;
+    padding: 12px 0;
     color: #ffffff;
     text-decoration: none;
     position: relative;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 5px;
     transition: color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1.2;
 }
 
 .cat-nav-item:hover {
@@ -1288,5 +1306,21 @@ a {
 @media (max-width: 992px) {
     .catalog-layout {
         grid-template-columns: 1fr !important;
+    }
+    .cat-nav-container {
+        padding: 0 16px !important;
+        gap: 16px !important;
+        font-size: 12px !important;
+    }
+    .cat-nav-item {
+        padding: 10px 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cat-nav-container {
+        padding: 0 12px !important;
+        gap: 12px !important;
+        font-size: 11.5px !important;
     }
 }
