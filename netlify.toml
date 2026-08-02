@@ -3,22 +3,9 @@
   command = "echo 'Static build ready'"
   functions = "netlify/functions"
 
-# Scheduled Function: Run Daily Blog Engine at Midnight
-[functions."blog-generator"]
-  schedule = "0 0 * * *"
-
-# Scheduled Function: Run Amazon Price Sync Every 5 Minutes
-[functions."price-updater"]
-  schedule = "*/5 * * * *"
-
-# Scheduled Function: Run Google SEO Instant Indexer Daily at 1:00 AM
-[functions."indexer"]
-  schedule = "0 1 * * *"
-
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Cache-Control = "public, max-age=0, must-revalidate"
