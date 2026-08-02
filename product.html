@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - EasyTech Electronics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=2.0">
+    <style>
+        /* ── Amazon-Style Product Detail Page (PDP) System ── */
+        .pdp-wrapper {
+            max-width: 1380px;
+            margin: 24px auto 60px;
+            padding: 0 24px;
+        }
+
+        .breadcrumb {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: #475569;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        .pdp-grid {
+            display: grid;
+            grid-template-columns: 460px 1fr;
+            gap: 40px;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+        }
+
+        /* Image Gallery */
+        .pdp-gallery-col {
+            display: flex;
+            gap: 16px;
+        }
+
+        .pdp-thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pdp-thumb-img {
+            width: 54px;
+            height: 54px;
+            border-radius: 8px;
+            border: 1.5px solid #e2e8f0;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pdp-thumb-img.active,
+        .pdp-thumb-img:hover {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        .pdp-main-img-box {
+            flex: 1;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            min-height: 420px;
+            position: relative;
+        }
+
+        .pdp-main-img-box img {
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* Product Details Info Column */
+        .pdp-info-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdp-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.35;
+            margin-bottom: 8px;
+        }
+
+        .pdp-brand {
+            font-size: 13px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .pdp-rating-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .pdp-deal-tag {
+            display: inline-block;
+            background: #cc0c39;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .pdp-price-box {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .pdp-discount-pct {
+            font-size: 26px;
+            font-weight: 800;
+            color: #cc0c39;
+        }
+
+        .pdp-price {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .pdp-mrp {
+            font-size: 14px;
+            color: #64748b;
+            text-decoration: line-through;
+            margin-bottom: 14px;
+        }
+
+        .pdp-tax-note {
+            font-size: 12px;
+            color: #475569;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* Offers Grid Cards */
+        .offers-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .offer-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .offer-card strong {
+            display: block;
+            font-size: 12px;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .offer-card p {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .offer-link {
+            font-size: 11px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-top: 6px;
+            display: inline-block;
+        }
+
+        /* Key Specifications List */
+        .specs-box {
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+        }
+
+        .specs-box h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .specs-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .specs-list li {
+            font-size: 12.5px;
+            color: #334155;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .specs-list li::before {
+            content: '✓';
+            color: #059669;
+            font-weight: 800;
+        }
+
+        /* STRICT 1-CLICK BUY NOW BUTTON ONLY (NO CART BUTTON) */
+        .buy-action-box {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .btn-amazon-buy-now {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, #ffa41c 0%, #ff8f00 100%);
+            color: #0f172a;
+            font-size: 16px;
+            font-weight: 800;
+            padding: 16px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(255, 143, 0, 0.35);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e67e00;
+        }
+
+        .btn-amazon-buy-now:hover {
+            background: linear-gradient(135deg, #ff8f00 0%, #e67e00 100%);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(255, 143, 0, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .amazon-trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 992px) {
+            .pdp-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            .offers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Top Affiliate Disclosure Bar -->
+    <div class="affiliate-disclosure-bar">
+        <span>💡 EasyTech partners with Amazon India. Verified prices, real-time availability, and instant Amazon purchase redirect.</span>
+    </div>
+
+    <!-- Header Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-accent">Easy</span>Tech
+            </a>
+            <div class="search-bar">
+                <input type="text" id="pdpSearchInput" placeholder="Search PC components, smartphones, laptops...">
+                <button type="button" class="btn-search">🔍</button>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Store Front</a>
+                <a href="builder.html" class="highlight-link">PC Studio</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blue Category Navigation Bar -->
+    <div class="category-nav-bar">
+        <div class="cat-nav-container">
+            <div class="cat-nav-item cat-dropdown">
+                <span>🖥️ PC Components & Accessories</span>
+                <div class="cat-dropdown-menu">
+                    <a href="index.html#marketplace" class="cat-dropdown-item">Processors (CPUs) & GPUs</a>
+                    <a href="index.html#marketplace" class="cat-dropdown-item">Motherboards, RAM & SSDs</a>
+                </div>
+            </div>
+
+            <div class="cat-nav-item cat-dropdown">
+                <span>📱 Mobile Phones & Accessories</span>
+                <div class="cat-dropdown-menu">
+                    <a href="index.html#marketplace" class="cat-dropdown-item">Flagship Smartphones</a>
+                    <a href="index.html#marketplace" class="cat-dropdown-item">Fast Chargers & Cases</a>
+                </div>
+            </div>
+
+            <div class="cat-nav-item cat-dropdown">
+                <span>💻 Laptops & Accessories</span>
+                <div class="cat-dropdown-menu">
+                    <a href="index.html#marketplace" class="cat-dropdown-item">Gaming & Workstation Laptops</a>
+                    <a href="index.html#marketplace" class="cat-dropdown-item">MacBooks & Accessories</a>
+                </div>
+            </div>
+
+            <a href="builder.html" class="cat-nav-item"
+                style="margin-left:auto; background:#ffffff; color:#2563eb; padding:6px 16px; border-radius:6px; font-weight:700;">⚡ Custom PC Builder</a>
+        </div>
+    </div>
+
+    <!-- Main Product Detail Section -->
+    <div class="pdp-wrapper">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb" id="pdpBreadcrumb">
+            <a href="index.html">Home</a> &rsaquo;
+            <a href="index.html#marketplace">Electronics</a> &rsaquo;
+            <span id="pdpCatName">Mobiles & Accessories</span> &rsaquo;
+            <span id="pdpShortTitle" style="color:#0f172a; font-weight:600;">Product Detail</span>
+        </div>
+
+        <div class="pdp-grid">
+            <!-- Gallery Column -->
+            <div class="pdp-gallery-col">
+                <div class="pdp-thumbnails">
+                    <img src="" id="thumb1" class="pdp-thumb-img active" alt="Thumb 1">
+                    <img src="" id="thumb2" class="pdp-thumb-img" alt="Thumb 2">
+                    <img src="" id="thumb3" class="pdp-thumb-img" alt="Thumb 3">
+                </div>
+                <div class="pdp-main-img-box">
+                    <img src="" id="pdpMainImg" alt="Product Image">
+                </div>
+            </div>
+
+            <!-- Product Details Column -->
+            <div class="pdp-info-col">
+                <h1 class="pdp-title" id="pdpTitle">Loading Product Title...</h1>
+                <div class="pdp-brand" id="pdpBrand">Brand: EasyTech Verified Partner</div>
+
+                <div class="pdp-rating-row" id="pdpRatingRow">
+                    <span style="color:#059669; font-weight:700;">4.7</span>
+                    <span style="color:#eab308;">★ ★ ★ ★ ★</span>
+                    <span style="color:#64748b; font-size:12px;">(Verified Amazon Ratings)</span>
+                </div>
+
+                <div class="pdp-deal-tag" id="pdpDealTag">Limited Time Deal</div>
+
+                <div class="pdp-price-box">
+                    <span class="pdp-discount-pct" id="pdpDiscountPct">-25%</span>
+                    <span class="pdp-price" id="pdpPrice">₹0</span>
+                </div>
+                <div class="pdp-mrp" id="pdpMrp">M.R.P.: ₹0</div>
+                <div class="pdp-tax-note">Inclusive of all taxes. Free Amazon Prime Delivery Available.</div>
+
+                <!-- Offers Grid Cards -->
+                <div class="offers-section-title">
+                    <span>🏷️ Exclusive Bank & Partner Offers</span>
+                </div>
+                <div class="offers-grid">
+                    <div class="offer-card">
+                        <strong>Cashback</strong>
+                        <p>Upto ₹50.00 cashback as Amazon Pay Balance</p>
+                        <a href="#" class="offer-link">8 offers &rsaquo;</a>
+                    </div>
+                    <div class="offer-card">
+                        <strong>Bank Offer</strong>
+                        <p>Upto ₹1,200.00 discount on select Credit Cards</p>
+                        <a href="#" class="offer-link">54 offers &rsaquo;</a>
+                    </div>
+                    <div class="offer-card">
+                        <strong>Partner Offers</strong>
+                        <p>Get GST invoice and save up to 18% on business purchases</p>
+                        <a href="#" class="offer-link">1 offer &rsaquo;</a>
+                    </div>
+                </div>
+
+                <!-- Specifications List -->
+                <div class="specs-box">
+                    <h4>Key Product Highlights & Specs</h4>
+                    <ul class="specs-list" id="pdpSpecsList">
+                        <li>High-durability shockproof construction</li>
+                        <li>Verified Amazon India Live Price Sync</li>
+                        <li>Official Manufacturer Warranty Included</li>
+                    </ul>
+                </div>
+
+                <!-- STRICT 1-CLICK BUY NOW BUTTON ONLY (NO CART BUTTON AT ALL) -->
+                <div class="buy-action-box">
+                    <a href="#" id="pdpBuyNowBtn" target="_blank" class="btn-amazon-buy-now">
+                        🛒 BUY NOW ON AMAZON
+                    </a>
+                    <div class="amazon-trust-badge">
+                        🔒 Direct 1-Click Redirect to Amazon Checkout • 100% Secure Transaction
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auto-refresh.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Dynamic Product Detail Page Loader
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id') || 'mob1';
+
+            const product = products.find(p => p.id === productId) || products[0];
+
+            if (product) {
+                document.title = `${product.title} - EasyTech Store`;
+                document.getElementById('pdpTitle').textContent = product.title;
+                document.getElementById('pdpShortTitle').textContent = product.title.substring(0, 35) + '...';
+                document.getElementById('pdpPrice').textContent = product.price;
+
+                const numericPrice = product.numericPrice || 1000;
+                const estimatedMRP = Math.round(numericPrice * 1.35);
+                document.getElementById('pdpMrp').textContent = `M.R.P.: ₹${estimatedMRP.toLocaleString('en-IN')}`;
+
+                document.getElementById('pdpMainImg').src = product.image;
+                document.getElementById('thumb1').src = product.image;
+                document.getElementById('thumb2').src = product.image;
+                document.getElementById('thumb3').src = product.image;
+
+                // Category breadcrumb formatting
+                const catMap = {
+                    'mobiles': 'Mobile Phones & Accessories',
+                    'laptops': 'Laptops & Accessories',
+                    'gpu': 'PC Components & Accessories',
+                    'cpu': 'PC Components & Accessories',
+                    'audio': 'PC & Mobile Accessories',
+                    'wearables': 'Smartwatches & Accessories',
+                    'monitors': 'PC Components & Monitors'
+                };
+                document.getElementById('pdpCatName').textContent = catMap[product.category] || 'Tech Products';
+
+                // Assign ONLY 1-CLICK BUY NOW BUTTON URL with affiliate tag
+                const buyBtn = document.getElementById('pdpBuyNowBtn');
+                if (buyBtn) {
+                    buyBtn.href = getAmazonLink(product);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
