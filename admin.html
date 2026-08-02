@@ -351,11 +351,52 @@
             align-items: center;
             gap: 8px;
         }
-        .section-label::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: #e2e8f0;
+        @media (max-width: 768px) {
+            .admin-dashboard {
+                padding: 20px 0 !important;
+            }
+            .dashboard-header {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 14px !important;
+            }
+            .dashboard-header > div:last-child {
+                width: 100% !important;
+                justify-content: space-between !important;
+            }
+            .master-switch-box {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 16px !important;
+            }
+            .master-switch-box button {
+                width: 100% !important;
+            }
+            .yt-video-card {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 14px !important;
+            }
+            .yt-video-card > div:last-child {
+                width: 100% !important;
+            }
+            .yt-video-card button {
+                width: 100% !important;
+            }
+            .profile-card-flex {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                max-width: 100% !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .admin-login-box {
+                border-radius: 12px !important;
+            }
+            .login-brand-bar, .login-form-wrap {
+                padding: 20px !important;
+            }
         }
     </style>
 </head>
@@ -431,7 +472,7 @@
         <div id="profileCard" style="display:none; background:white; border:1px solid #e2e8f0; border-radius:12px; padding:20px 24px; margin-bottom:24px; box-shadow:0 4px 12px rgba(15,23,42,0.06);">
             <h3 style="font-size:16px; font-weight:700; color:#0f172a; margin-bottom:6px;">👤 Administrator Profile Settings</h3>
             <p style="font-size:12px; color:#64748b; margin-bottom:16px;">Update your registered administrator email address for OTP passkey delivery.</p>
-            <div style="display:flex; gap:12px; align-items:center; max-width:500px;">
+            <div class="profile-card-flex" style="display:flex; gap:12px; align-items:center; max-width:500px;">
                 <input type="email" id="profileEmailInput" value="pothurikalyanram@gmail.com" style="flex:1; padding:10px 14px; border:1.5px solid #cbd5e1; border-radius:8px; font-size:13px;" required>
                 <button id="saveProfileEmailBtn" class="btn btn-primary" style="font-size:13px; padding:10px 18px;">Save New Email</button>
             </div>

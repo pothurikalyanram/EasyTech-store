@@ -228,12 +228,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (approveYtBtn) {
+        if (localStorage.getItem('easytechYtPublished') === 'true') {
+            approveYtBtn.textContent = 'Published';
+            approveYtBtn.style.background = '#059669';
+            approveYtBtn.disabled = true;
+        }
+
         approveYtBtn.addEventListener('click', () => {
             approveYtBtn.textContent = 'Publishing...';
             approveYtBtn.disabled = true;
             setTimeout(() => {
                 approveYtBtn.textContent = 'Published';
                 approveYtBtn.style.background = '#059669';
+                localStorage.setItem('easytechYtPublished', 'true');
                 alert('Media published to YouTube channel: easytechtalks360');
             }, 1800);
         });
