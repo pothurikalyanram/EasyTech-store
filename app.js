@@ -516,7 +516,11 @@ const defaultASINs = {
 // Generate Foolproof Amazon Affiliate Link (0% 404 Error Guarantee)
 function getAmazonLink(item) {
     if (!item) return `https://www.amazon.in/?tag=${AFFILIATE_TAG}`;
-    
+
+    if (typeof item === 'object' && item.asin && item.asin.length === 10 && !item.asin.startsWith('B083LS165')) {
+        return `https://www.amazon.in/dp/${item.asin}?tag=${AFFILIATE_TAG}`;
+    }
+
     let title = '';
     if (typeof item === 'object') {
         title = item.title || '';
@@ -525,7 +529,7 @@ function getAmazonLink(item) {
     }
 
     // Clean title for 100% foolproof Amazon India search & buy page with affiliate tag
-    const cleanTitle = title.replace(/\([^)]*\)/g, '').trim();
+    const cleanTitle = title.replace(/\([^)]*\)/g, '').replace(/[^a-zA-Z0-9\s]/g, ' ').trim();
     return `https://www.amazon.in/s?k=${encodeURIComponent(cleanTitle)}&tag=${AFFILIATE_TAG}`;
 }
 
