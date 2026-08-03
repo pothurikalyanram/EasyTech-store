@@ -16,6 +16,7 @@ const filesToCopy = [
     'privacy.html',
     'terms.html',
     'app.js',
+    'index.js',
     'builder.js',
     'super-admin.js',
     'auto-refresh.js',
