@@ -84,7 +84,7 @@ const products = [
         price: '₹45,490',
         numericPrice: 45490,
         rating: '4.5 ★ (14,200 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71TPdaC66YL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80',
         badge: 'Top Energy Saver'
     },
     {
@@ -95,7 +95,7 @@ const products = [
         price: '₹46,990',
         numericPrice: 46990,
         rating: '4.6 ★ (18,500 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61gV4aQnQ+L._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=800&q=80',
         badge: 'Best Seller'
     },
 
@@ -108,7 +108,7 @@ const products = [
         price: '₹34,490',
         numericPrice: 34490,
         rating: '4.6 ★ (22,100 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71u9sJm95eL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=800&q=80',
         badge: 'Top Washer'
     },
     {
@@ -119,7 +119,7 @@ const products = [
         price: '₹17,990',
         numericPrice: 17990,
         rating: '4.4 ★ (31,400 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61K-K+9pPzL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=800&q=80',
         badge: 'Best Value'
     },
 
@@ -132,7 +132,7 @@ const products = [
         price: '₹57,990',
         numericPrice: 57990,
         rating: '4.8 ★ (11,800 ratings)',
-        image: 'https://m.media-amazon.com/images/I/81vDMy3tXpL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80',
         badge: 'Cinema 4K'
     },
     {
@@ -143,7 +143,7 @@ const products = [
         price: '₹62,490',
         numericPrice: 62490,
         rating: '4.7 ★ (9,400 ratings)',
-        image: 'https://m.media-amazon.com/images/I/81L6+o1gqLL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=800&q=80',
         badge: 'Quantum QLED'
     },
 
@@ -156,7 +156,7 @@ const products = [
         price: '₹14,990',
         numericPrice: 14990,
         rating: '4.5 ★ (15,200 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61-T0F4J+LL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=800&q=80',
         badge: 'Top Convection'
     },
     {
@@ -167,7 +167,7 @@ const products = [
         price: '₹8,999',
         numericPrice: 8999,
         rating: '4.6 ★ (28,000 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61X-jX2kHML._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1626147311219-6911ce6d4b2b?auto=format&fit=crop&w=800&q=80',
         badge: 'Best Healthy Tech'
     },
 
@@ -180,7 +180,7 @@ const products = [
         price: '₹28,990',
         numericPrice: 28990,
         rating: '4.6 ★ (6,800 ratings)',
-        image: 'https://m.media-amazon.com/images/I/81K9n7U6jKL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
         badge: '4K Ergonomic'
     },
     {
@@ -191,7 +191,7 @@ const products = [
         price: '₹48,990',
         numericPrice: 48990,
         rating: '4.7 ★ (4,900 ratings)',
-        image: 'https://m.media-amazon.com/images/I/81WnWzX6jKL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1585792180666-f7347c490ee2?auto=format&fit=crop&w=800&q=80',
         badge: '240Hz Esports'
     },
 
@@ -204,7 +204,7 @@ const products = [
         price: '₹1,27,990',
         numericPrice: 127990,
         rating: '4.8 ★ (8,400 ratings)',
-        image: 'https://m.media-amazon.com/images/I/81SigAn-rKL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80',
         badge: 'Flagship Phone'
     },
     {
@@ -215,7 +215,7 @@ const products = [
         price: '₹1,29,999',
         numericPrice: 129999,
         rating: '4.7 ★ (6,100 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71CX1The91L._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80',
         badge: 'AI Flagship'
     },
 
@@ -228,7 +228,7 @@ const products = [
         price: '₹29,990',
         numericPrice: 29990,
         rating: '4.7 ★ (12,400 ratings)',
-        image: 'https://m.media-amazon.com/images/I/51SKmu2G9FL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80',
         badge: 'Top Audio'
     },
     {
@@ -239,7 +239,7 @@ const products = [
         price: '₹9,999',
         numericPrice: 9999,
         rating: '4.5 ★ (8,120 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61-59p7lQdL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80',
         badge: 'Best Seller'
     },
     {
@@ -250,7 +250,7 @@ const products = [
         price: '₹9,499',
         numericPrice: 9499,
         rating: '4.6 ★ (19,500 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61P9W1tUfEL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=80',
         badge: 'Popular'
     },
 
@@ -263,7 +263,7 @@ const products = [
         price: '₹41,900',
         numericPrice: 41900,
         rating: '4.8 ★ (5,200 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71vCuVR4zkL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80',
         badge: 'Premium Pick'
     },
     {
@@ -274,7 +274,7 @@ const products = [
         price: '₹28,999',
         numericPrice: 28999,
         rating: '4.6 ★ (3,900 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71z1S1K0nHL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80',
         badge: 'Top Rated'
     },
     {
@@ -285,7 +285,7 @@ const products = [
         price: '₹2,499',
         numericPrice: 2499,
         rating: '4.4 ★ (42,000 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61ZjlBOv+BL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80',
         badge: 'Best Value'
     },
 
@@ -298,7 +298,7 @@ const products = [
         price: '₹12,999',
         numericPrice: 12999,
         rating: '4.8 ★ (3,100 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61lXG-3pFFL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1609592424109-dd9892f1b177?auto=format&fit=crop&w=800&q=80',
         badge: '140W Fast'
     },
     {
@@ -309,7 +309,7 @@ const products = [
         price: '₹2,999',
         numericPrice: 2999,
         rating: '4.5 ★ (6,400 ratings)',
-        image: 'https://m.media-amazon.com/images/I/51b9o+G1WmL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80',
         badge: 'GaN Tech'
     },
 
@@ -322,54 +322,19 @@ const products = [
         price: '₹89,900',
         numericPrice: 89900,
         rating: '4.8 ★ (11,300 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71jG+e7roXL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
         badge: 'M2 Chip'
     },
     {
         id: 'l2',
         asin: 'B0C5MC4YBG',
-        title: 'ASUS ROG Strix G16 Gaming Laptop (Intel i7-13650HX, RTX 4060 8GB)',
+        title: 'ASUS ROG Strix G16 Gaming Laptop (Intel Core i7-13650HX, RTX 4060)',
         category: 'laptops',
-        price: '₹1,34,990',
-        numericPrice: 134990,
-        rating: '4.7 ★ (1,850 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71-6Qp1uQmL._AC_SL1500_.jpg',
-        badge: 'Gaming Beast'
-    },
-    {
-        id: 'l3',
-        asin: 'B0BYRLLK3H',
-        title: 'Apple iPad Air (5th Gen, M1 Chip, 10.9-inch Wi-Fi 64GB)',
-        category: 'laptops',
-        price: '₹54,900',
-        numericPrice: 54900,
-        rating: '4.8 ★ (9,400 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71VbHaAqbML._AC_SL1500_.jpg',
-        badge: 'M1 Tablet'
-    },
-
-    // 🎮 Gaming Gear
-    {
-        id: 'g1',
-        asin: 'B08H99BPJN',
-        title: 'Sony PlayStation 5 DualSense Wireless Controller (Midnight Black)',
-        category: 'gaming',
-        price: '₹5,790',
-        numericPrice: 5790,
-        rating: '4.7 ★ (18,900 ratings)',
-        image: 'https://m.media-amazon.com/images/I/612bkL9z6mL._AC_SL1500_.jpg',
-        badge: 'Official PS5'
-    },
-    {
-        id: 'g2',
-        asin: 'B07W6JP81R',
-        title: 'Logitech G502 Hero High Performance Wired Gaming Mouse (16,000 DPI)',
-        category: 'gaming',
-        price: '₹3,995',
-        numericPrice: 3995,
-        rating: '4.6 ★ (34,100 ratings)',
-        image: 'https://m.media-amazon.com/images/I/51IOk6wK5-L._AC_SL1500_.jpg',
-        badge: 'Best Seller'
+        price: '₹1,39,990',
+        numericPrice: 139990,
+        rating: '4.7 ★ (2,800 ratings)',
+        image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80',
+        badge: 'RTX 4060 Gaming'
     },
 
     // 🖥️ PC Cabinets & Cases
@@ -381,7 +346,7 @@ const products = [
         price: '₹7,490',
         numericPrice: 7490,
         rating: '4.7 ★ (4,210 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71Zp+3yW1qL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
         badge: 'Mid-Tower'
     },
     {
@@ -392,7 +357,7 @@ const products = [
         price: '₹6,890',
         numericPrice: 6890,
         rating: '4.6 ★ (1,150 ratings)',
-        image: 'https://m.media-amazon.com/images/I/81x1-k63LBL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=800&q=80',
         badge: 'High Airflow'
     },
 
@@ -405,7 +370,7 @@ const products = [
         price: '₹61,499',
         numericPrice: 61499,
         rating: '4.8 ★ (890 ratings)',
-        image: 'https://m.media-amazon.com/images/I/71P7uD-OQkL._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=800&q=80',
         badge: 'RTX 4070'
     },
     {
@@ -416,7 +381,7 @@ const products = [
         price: '₹37,990',
         numericPrice: 37990,
         rating: '4.9 ★ (3,450 ratings)',
-        image: 'https://m.media-amazon.com/images/I/61b17fV5S7L._AC_SL1500_.jpg',
+        image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=800&q=80',
         badge: '#1 Gaming CPU'
     }
 ];
