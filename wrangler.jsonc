@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "easytech-site-live",
   "compatibility_date": "2026-08-03",
@@ -10,3 +11,6 @@
     ]
   }
 }
+=======
+{"name": "easytech-site-live", "compatibility_date": "2026-08-03", "assets": {"directory": "."}}
+>>>>>>> 14fb307c7d16ffcb69bac38c836e418954875906
