@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyTech | Premier Electronics, PC Hardware & Tech Marketplace</title>
+    <meta name="description"
+        content="Explore verified tech electronics, audio, smartwatches, computer components, and build your workstation with live compatibility. Real-time Amazon India pricing.">
+    <meta name="referrer" content="no-referrer">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=2.0">
+</head>
+
+<body>
+
+    <!-- Professional Reader Disclosure -->
+    <div class="affiliate-disclosure-bar">
+        <span>EasyTech is reader-supported. Purchases made through links on our site earn an affiliate commission from
+            Amazon India.</span>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-accent">Easy</span>Tech <span class="badge-tag">OFFICIAL</span>
+            </a>
+
+            <div class="search-bar">
+                <input type="text" id="searchInput"
+                    placeholder="Search any electronics, earbuds, laptops, GPUs, chargers...">
+                <button id="searchBtn">Search</button>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="#marketplace">All Products</a>
+                <a href="blog.html">Reviews & Guides</a>
+
+                <!-- Flag Language Selector -->
+                <div class="lang-selector">
+                    <button class="lang-btn" id="langBtn">
+                        <img src="https://flagcdn.com/w40/in.png" class="flag-icon-img" alt="India Flag"> <span
+                            id="selectedLangCode">EN</span> ▼
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <div class="lang-opt" data-code="EN"><img src="https://flagcdn.com/w40/in.png"
+                                class="flag-icon-img" alt="India"> EN - English</div>
+                        <div class="lang-opt" data-code="TE"><img src="https://flagcdn.com/w40/in.png"
+                                class="flag-icon-img" alt="India"> TE - Telugu (తెలుగు)</div>
+                        <div class="lang-opt" data-code="TA"><img src="https://flagcdn.com/w40/in.png"
+                                class="flag-icon-img" alt="India"> TA - Tamil (தமிழ்)</div>
+                        <div class="lang-opt" data-code="KA"><img src="https://flagcdn.com/w40/in.png"
+                                class="flag-icon-img" alt="India"> KA - Kannada (ಕನ್ನಡ)</div>
+                        <div class="lang-opt" data-code="HI"><img src="https://flagcdn.com/w40/in.png"
+                                class="flag-icon-img" alt="India"> HI - Hindi (हिंदी)</div>
+                        <div class="lang-opt" data-code="NE"><img src="https://flagcdn.com/w40/in.png"
+                                class="flag-icon-img" alt="India"> NE - Nepali (नेपाली)</div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Blue Sub-Header Category Navigation Bar (3 Core Pillars Focus) -->
+    <div class="category-nav-bar">
+        <div class="cat-nav-container">
+            <div class="cat-nav-item cat-dropdown">
+                <span>🖥️ PC Components & Accessories</span>
+                <div class="cat-dropdown-menu">
+                    <a href="#marketplace" class="cat-dropdown-item">Processors (CPUs) & Graphics Cards (GPUs)</a>
+                    <a href="#marketplace" class="cat-dropdown-item">Motherboards, RAM & High-Speed SSDs</a>
+                    <a href="#marketplace" class="cat-dropdown-item">Power Supplies, Cases & Liquid Cooling</a>
+                    <a href="#marketplace" class="cat-dropdown-item">Gaming Monitors, Keyboards & Mice</a>
+                </div>
+            </div>
+
+            <div class="cat-nav-item cat-dropdown">
+                <span>📱 Mobile Phones & Accessories</span>
+                <div class="cat-dropdown-menu">
+                    <a href="#marketplace" class="cat-dropdown-item">Flagship iPhones & Android Smartphones</a>
+                    <a href="#marketplace" class="cat-dropdown-item">5G Budget Performance Smartphones</a>
+                    <a href="#marketplace" class="cat-dropdown-item">Fast Chargers, Power Banks & Cables</a>
+                    <a href="#marketplace" class="cat-dropdown-item">Protective Cases & Screen Protectors</a>
+                </div>
+            </div>
+
+            <div class="cat-nav-item cat-dropdown">
+                <span>💻 Laptops & Accessories</span>
+                <div class="cat-dropdown-menu">
+                    <a href="#marketplace" class="cat-dropdown-item">Gaming & Creator Laptops</a>
+                    <a href="#marketplace" class="cat-dropdown-item">Apple MacBooks & iPads</a>
+                    <a href="#marketplace" class="cat-dropdown-item">Laptop Bags, Sleeves & Stands</a>
+                    <a href="#marketplace" class="cat-dropdown-item">USB-C Hubs & Docking Stations</a>
+                </div>
+            </div>
+
+            <a href="builder.html" class="cat-nav-item"
+                style="margin-left:auto; background:#ffffff; color:#2563eb; padding:6px 16px; border-radius:6px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,0.1);">⚡ Custom PC Builder</a>
+        </div>
+    </div>
+
+    <!-- 1. Top Header Ad Banner (Slot 1 - Invisible by default) -->
+    <div id="adSlot1" class="container ad-slot-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">All Electronics & Tech Destination</span>
+                <h1>Discover Premium Tech & Build Your Custom PC <span class="gradient-text">With Live Compatibility</span></h1>
+                <p>Real-time live Amazon prices, verified user ratings, and expert hardware evaluations across all
+                    electronics categories.</p>
+                <div class="hero-actions">
+                    <a href="builder.html" class="btn btn-primary btn-large">Launch PC Studio</a>
+                    <a href="#marketplace" class="btn btn-secondary btn-large">Browse Electronics Catalog</a>
+                </div>
+                <div class="trust-pill-group">
+                    <span class="trust-pill">Verified Amazon Prices</span>
+                    <span class="trust-pill">Secure Checkout</span>
+                    <span class="trust-pill">Authentic Ratings</span>
+                </div>
+            </div>
+            <div class="hero-preview-box">
+                <div class="preview-card">
+                    <div class="preview-badge">PC Studio Environment</div>
+                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80"
+                        alt="Workstation PC Cabinet">
+                    <div class="preview-footer">
+                        <span>NZXT H510 Matte White Case</span>
+                        <a href="builder.html" class="btn btn-sm btn-outline">Customize PC →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main E-Commerce Catalog Layout (Full-Width Sidebar + Products Grid) -->
+    <section class="container section" id="marketplace">
+        <div class="section-header">
+            <h2>Electronics & Hardware Marketplace</h2>
+            <p>Filter by price range, category, or sorting preference</p>
+        </div>
+
+        <div class="catalog-layout">
+            <aside class="catalog-sidebar">
+                <div class="filter-group">
+                    <h4 class="filter-title">Filter by Category</h4>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="all" checked>
+                        All Categories</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="ac"> Air
+                        Conditioners (AC)</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="wash"> Washing
+                        Machines</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="tv"> Smart TVs
+                        & Audio</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="kitchen">
+                        Microwave & Kitchen Tech</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="monitors">
+                        Monitors & Displays</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="mobiles">
+                        Mobile Phones & Tablets</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="audio"> Audio &
+                        Headphones</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="laptops">
+                        Laptops & PCs</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="category-filter" value="gaming"> Gaming
+                        Consoles & Gear</label>
+                </div>
+
+                <div class="filter-group">
+                    <h4 class="filter-title">Filter by Price</h4>
+                    <label class="filter-checkbox"><input type="checkbox" class="price-filter" value="under-1000"> Under
+                        ₹999</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="price-filter" value="1000-5000"> ₹1,000
+                        - ₹5,000</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="price-filter" value="5000-20000">
+                        ₹5,000 - ₹20,000</label>
+                    <label class="filter-checkbox"><input type="checkbox" class="price-filter" value="above-20000">
+                        ₹20,000+</label>
+                </div>
+
+                <div class="filter-group">
+                    <h4 class="filter-title">Sort By</h4>
+                    <select id="sortSelect" class="filter-select">
+                        <option value="featured">Featured Picks</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <button id="resetFiltersBtn" class="btn btn-outline width-100 btn-sm">Reset All Filters</button>
+                </div>
+
+                <!-- 2. Left Sidebar Upper Ad (Slot 2) & Lower Ad (Slot 3) -->
+                <div id="adSlot2" class="ad-slot-container sidebar-ad-slot"></div>
+                <div id="adSlot3" class="ad-slot-container sidebar-ad-slot"></div>
+            </aside>
+
+            <!-- Product Grid Column -->
+            <div class="catalog-content">
+                <div class="catalog-meta">
+                    <span id="productCountText">Showing all products</span>
+                </div>
+                <!-- 4. Upper In-Feed Marketplace Ad (Slot 4) -->
+                <div id="adSlot4" class="ad-slot-container"></div>
+                <div class="product-grid" id="productGrid">
+                    <!-- Dynamic JS Injected Products -->
+                </div>
+                <!-- 5. Lower In-Feed Marketplace Ad (Slot 5) -->
+                <div id="adSlot5" class="ad-slot-container"></div>
+                <div class="load-more-box">
+                    <button id="loadMoreBtn" class="btn btn-outline btn-large">Load More Products</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Budget Accessories Section (Under ₹999) -->
+    <section class="container section impulse-section">
+        <div class="impulse-box">
+            <div class="impulse-header">
+                <h2>Essential Tech Accessories (Under ₹999)</h2>
+                <p>High-utility daily tech additions with verified ratings</p>
+            </div>
+            <div class="product-grid impulse-grid" id="impulseGrid">
+                <!-- Dynamic JS Injected Impulse Products -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Mid-Content Banner (Slot 6 - Invisible by default) -->
+    <div id="adSlot6" class="container ad-slot-container"></div>
+
+    <!-- AI Blog Preview -->
+    <section class="container section" id="blog-preview">
+        <div class="section-header">
+            <h2>Technical Reviews & Guides</h2>
+            <p>In-depth hardware analysis and component evaluations</p>
+        </div>
+
+        <div class="blog-grid" id="blogGrid">
+            <!-- Injected via app.js -->
+        </div>
+    </section>
+
+    <!-- 7. Bottom Footer Banner (Slot 7 - Invisible by default) -->
+    <div id="adSlot7" class="container ad-slot-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <a href="index.html" class="logo text-white">
+                    <span class="logo-accent">Easy</span>Tech
+                </a>
+                <p>Premier destination for computer electronics, desktop hardware, and custom PC configurations.</p>
+                <div class="trust-icons">
+                    <span>Verified Tech Marketplace</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="builder.html">PC Builder Studio</a></li>
+                    <li><a href="blog.html">Reviews & Guides</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Compliance</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 EasyTech (easytechpc.store). All rights reserved. Amazon and the Amazon logo are trademarks of
+                Amazon.com, Inc.</p>
+        </div>
+    </footer>
+
+    <!-- Product Quick-View Modal -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-card modal-lg">
+            <button class="modal-close" id="closeQuickViewModal">✕</button>
+            <div class="quick-view-content" id="quickViewBody">
+                <!-- Dynamic Quick View -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Exit Recommendation Modal -->
+    <div class="modal-overlay" id="exitModal">
+        <div class="modal-card">
+            <button class="modal-close" id="closeExitModal">✕</button>
+            <div class="modal-body">
+                <span class="badge-recommend">Recommended Accessory</span>
+                <h3>High-Utility Desktop Addition</h3>
+                <p>Verified Amazon ratings and live availability.</p>
+                <div class="modal-product" id="modalProductContent"></div>
+                <div class="modal-actions">
+                    <a href="#" id="modalBuyBtn" target="_blank" class="btn btn-primary width-100">Buy Now</a>
+                    <button class="btn-text" id="dismissExitBtn">Continue browsing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Push Notification Bar -->
+    <div class="push-bar" id="pushBar">
+        <span>Enable price notifications for selected components</span>
+        <button id="enablePushBtn" class="btn btn-sm btn-primary">Enable Alerts</button>
+        <button id="dismissPushBtn" class="btn-icon">✕</button>
+    </div>
+
+
+
+    <script src="auto-refresh.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

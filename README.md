@@ -29,10 +29,11 @@ Welcome to **EasyTech (`easytechpc.store`)**, a high-performance **Headless Amaz
 ### Key Vision Pillars:
 1. **Zero Database Dependency**: Bypasses heavy local database storage by projecting live high-resolution product images directly from Amazon India's official media CDN (`m.media-amazon.com`).
 2. **0% 404 Error Checkout Guarantee**: Every product card routes directly to Amazon India's live checkout search engine (`https://www.amazon.in/s?k=PRODUCT_NAME&tag=easytech020-21`).
-3. **Automated Serverless AI Engines**:
-   - **Google Gemini 1.5 Flash AI Blog Bot**: Daily automated hardware review writer.
-   - **Amazon Price & Stock Sync Engine**: Ultra-fast **5-minute live price & stock verification**.
-   - **Google Search Console Instant Indexer**: Daily 1:00 AM SEO sitemap & URL submitter.
+3. **Automated Serverless Cloudflare Functions**:
+   - **Google Gemini AI Blog Engine** (`/api/blog-generator`): Hardware review writer.
+   - **Amazon Price & Stock Sync Engine** (`/api/price-updater`): Live price & stock verification.
+   - **Google Search Console Instant Indexer** (`/api/indexer`): SEO sitemap & URL submitter.
+   - **Admin Security Passkey Engine** (`/api/send-otp`): Resend API two-factor verification.
 
 ---
 
@@ -41,20 +42,57 @@ Welcome to **EasyTech (`easytechpc.store`)**, a high-performance **Headless Amaz
 * **`index.html`**: Main marketplace storefront with live search, category filters, infinite scroll, and Amazon deal cards.
 * **`app.js`**: Core storefront logic, `syncLiveAmazonPrices()`, `getAmazonLink()`, out-of-stock badges, and multi-language switcher.
 * **`styles.css`**: Modern clean white design system with responsive card layouts and smooth hover animations.
-* **`builder.html` & `builder.js`**: Custom 3D PC Builder studio with Three.js rendering, power wattage calculator, and 1-click Amazon affiliate cart builder.
+* **`builder.html` & `builder.js`**: Custom PC Builder studio with wattage calculator and 1-click Amazon affiliate cart builder.
 * **`blog.html`**: Full-page technical review reader displaying AI-generated benchmarks, specs, and Amazon deal buttons.
-* **`super-admin-master.html` & `super-admin.js`**: Founder Control Panel with Master PIN (`2026`), State-wise India SEO Traffic Map, and Ad Slot Manager (Slots 1–7).
-* **`netlify/functions/`**: Serverless functions for Gemini AI blogging (`blog-generator.js`), Amazon price sync (`price-updater.js`), and Google SEO indexing (`indexer.js`).
+* **`super-admin-master.html` & `super-admin.js`**: Founder Control Panel with Master PIN (`2026`), State-wise India SEO Traffic Map, and Ad Slot Manager.
+* **`functions/api/`**: Cloudflare Pages Serverless Functions for Gemini AI blogging, Amazon price sync, Google SEO indexing, and admin OTP authentication.
 * **`sitemap.xml` & `robots.txt`**: Search engine indexer files.
-* **`netlify.toml`**: Scheduled cron configuration and security headers.
+* **`_headers` & `_redirects`**: Cloudflare Pages security headers and route rewrites.
 
 ---
 
-## ⚡ How to Deploy to Netlify (1-Minute Setup)
+## ⚡ How to Deploy to Cloudflare Pages (Automated Setup)
 
-1. Open **[Netlify Dashboard](https://app.netlify.com/projects/easytech-store/deploys)**.
-2. Drag and drop the folder `E:\EasyTech E-Commerce Automated Website Workspace` into the Netlify upload box.
-3. Once uploaded, click **`Publish deploy`** on today's top build!
+### Method 1: Using Command Line (Wrangler CLI)
+Run the following command in your terminal:
+```bash
+npx wrangler pages deploy . --project-name easytech-store
+```
+*(If prompted, log in with your Cloudflare account in the browser window that opens)*.
+
+### Method 2: Connecting GitHub Repository to Cloudflare Pages Dashboard
+1. Go to **[Cloudflare Dashboard](https://dash.cloudflare.com/)** ➔ **Workers & Pages** ➔ **Create Application** ➔ **Pages** ➔ **Connect to Git**.
+2. Select your repository `EasyTech-store`.
+3. Build Settings:
+   - **Framework Preset**: None
+   - **Build Command**: *(Leave empty)*
+   - **Build output directory**: `.`
+4. Click **Save and Deploy**. Cloudflare will automatically build and deploy your site with free serverless functions enabled!
+
+---
+
+## 🌐 Linking Your GoDaddy Domain (`easytechpc.store`) to Cloudflare (Free DNS & SSL)
+
+Follow these 4 simple steps to point your GoDaddy domain to Cloudflare:
+
+1. **Add Your Domain in Cloudflare**:
+   - In Cloudflare Dashboard, click **Add a Site** and type your GoDaddy domain (e.g. `easytechpc.store`).
+   - Select the **Free** plan ($0/mo).
+   - Cloudflare will automatically scan your existing DNS records.
+
+2. **Copy Cloudflare Nameservers**:
+   - Cloudflare will provide 2 unique nameservers (e.g., `ada.ns.cloudflare.com` and `bob.ns.cloudflare.com`).
+
+3. **Update Nameservers in GoDaddy**:
+   - Log into **[GoDaddy Domain Portfolio](https://dcc.godaddy.com/)**.
+   - Click your domain (`easytechpc.store`) ➔ **DNS** ➔ **Nameservers**.
+   - Click **Change Nameservers** ➔ **I'll use my own nameservers**.
+   - Paste the 2 Cloudflare Nameservers and click **Save**.
+
+4. **Attach Custom Domain in Cloudflare Pages**:
+   - In Cloudflare Pages project (`easytech-store`), go to **Custom Domains** ➔ **Set up a Custom Domain**.
+   - Enter `easytechpc.store` (and `www.easytechpc.store`).
+   - Cloudflare will automatically activate free SSL/TLS, DDoS protection, and global CDN caching!
 
 ---
 

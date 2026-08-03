@@ -1,23 +1,23 @@
-// Netlify Serverless Scheduled Function - AI Blog Generator
-// Runs automatically every 24 hours via Netlify Cron & on demand
+// Cloudflare Pages Function - AI Blog Generator (Google Gemini Flash)
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+export async function onRequest(context) {
+    const { env } = context;
 
-exports.handler = async function(event, context) {
-    console.log("🤖 Running Daily AI Blog Generator Engine...");
+    console.log("🤖 Running Daily AI Blog Generator Engine on Cloudflare...");
+
+    const GEMINI_API_KEY = env?.GEMINI_API_KEY;
 
     if (!GEMINI_API_KEY) {
-        return {
-            statusCode: 200,
+        return new Response(JSON.stringify({ 
+            status: "warning", 
+            message: "GEMINI_API_KEY environment variable pending. Running in standard catalog mode." 
+        }), {
+            status: 200,
             headers: { 
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*" 
-            },
-            body: JSON.stringify({ 
-                status: "warning", 
-                message: "GEMINI_API_KEY environment variable pending. Running in standard catalog mode." 
-            })
-        };
+            }
+        });
     }
 
     try {
@@ -47,28 +47,26 @@ exports.handler = async function(event, context) {
         const data = await response.json();
         const generatedText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Article generated successfully.";
 
-        return {
-            statusCode: 200,
+        return new Response(JSON.stringify({
+            status: "success",
+            topic: selectedTopic,
+            content: generatedText,
+            generatedAt: new Date().toISOString()
+        }), {
+            status: 200,
             headers: { 
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*" 
-            },
-            body: JSON.stringify({
-                status: "success",
-                topic: selectedTopic,
-                content: generatedText,
-                generatedAt: new Date().toISOString()
-            })
-        };
+            }
+        });
     } catch (error) {
         console.error("Gemini AI API Error:", error);
-        return {
-            statusCode: 500,
+        return new Response(JSON.stringify({ status: "error", message: error.message }), {
+            status: 500,
             headers: { 
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*" 
-            },
-            body: JSON.stringify({ status: "error", message: error.message })
-        };
+            }
+        });
     }
-};
+}

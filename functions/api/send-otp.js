@@ -1,11 +1,10 @@
-// Netlify Serverless Function: Send Real Admin Security Passkey OTP via Resend API
-exports.handler = async (event) => {
-    if (event.httpMethod !== 'POST') {
-        return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
-    }
+// Cloudflare Pages Function: Send Real Admin Security Passkey OTP via Resend API
+
+export async function onRequestPost(context) {
+    const { request, env } = context;
 
     try {
-        const body = JSON.parse(event.body || '{}');
+        const body = await request.json().catch(() => ({}));
         const email = body.email || 'pothurikalyanram@gmail.com';
         const alternateEmail = body.alternateEmail || '';
         const passkey = body.passkey || Math.floor(100000 + Math.random() * 900000).toString();
@@ -15,21 +14,19 @@ exports.handler = async (event) => {
             recipients.push(alternateEmail);
         }
 
-        const RESEND_API_KEY = process.env.RESEND_API_KEY;
+        const RESEND_API_KEY = env.RESEND_API_KEY;
 
         if (!RESEND_API_KEY) {
-            // Return generated passkey fallback mode if key is pending
-            return {
-                statusCode: 200,
-                body: JSON.stringify({
-                    status: 'fallback',
-                    passkey: passkey,
-                    message: 'Resend API key not configured. Using Emergency Passkey mode.'
-                })
-            };
+            return new Response(JSON.stringify({
+                status: 'fallback',
+                passkey: passkey,
+                message: 'Resend API key not configured. Using Emergency Passkey mode.'
+            }), {
+                status: 200,
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+            });
         }
 
-        // Call Resend REST API to deliver OTP directly to email inbox(es)
         const response = await fetch('https://api.resend.com/emails', {
             method: 'POST',
             headers: {
@@ -66,20 +63,20 @@ exports.handler = async (event) => {
 
         const data = await response.json();
 
-        return {
-            statusCode: 200,
-            body: JSON.stringify({
-                status: 'success',
-                email: email,
-                passkey: passkey,
-                resendId: data.id || null,
-                message: `Security passkey delivered to ${email}`
-            })
-        };
+        return new Response(JSON.stringify({
+            status: 'success',
+            email: email,
+            passkey: passkey,
+            resendId: data.id || null,
+            message: `Security passkey delivered to ${email}`
+        }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        });
     } catch (err) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ error: err.message })
-        };
+        return new Response(JSON.stringify({ error: err.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        });
     }
-};
+}

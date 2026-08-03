@@ -4,7 +4,7 @@
   "description": "EasyTech E-Commerce Platform",
   "main": "index.html",
   "scripts": {
-    "build": "echo 'Static build ready'",
+    "build": "node build.js",
     "deploy": "wrangler deploy"
   },
   "devDependencies": {
