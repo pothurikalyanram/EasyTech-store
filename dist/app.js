@@ -34,11 +34,35 @@ function initMasterAiSentinel() {
         if (e.preventDefault) e.preventDefault();
     });
 
-    // 3. Image 404 Auto-Healing Sentinel
+    // 3. Image 404 Smart Category Auto-Healing Sentinel
     document.addEventListener('error', function(e) {
         if (e.target && e.target.tagName === 'IMG') {
             console.warn('[Master AI Sentinel] Auto-remediating broken image URL:', e.target.src);
-            e.target.src = 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80';
+            const altText = (e.target.alt || '').toLowerCase();
+            const parentCard = e.target.closest('.card') || e.target.closest('.product-card') || document.body;
+            const fullText = (altText + ' ' + (parentCard ? parentCard.innerText : '')).toLowerCase();
+
+            if (fullText.includes('ac') || fullText.includes('air conditioner') || fullText.includes('daikin') || fullText.includes('inverter split')) {
+                e.target.src = 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=600&q=80';
+            } else if (fullText.includes('wash') || fullText.includes('front load') || fullText.includes('top load') || fullText.includes('washing machine')) {
+                e.target.src = 'https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=600&q=80';
+            } else if (fullText.includes('tv') || fullText.includes('bravia') || fullText.includes('qled') || fullText.includes('google tv') || fullText.includes('smart tv')) {
+                e.target.src = 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=600&q=80';
+            } else if (fullText.includes('oven') || fullText.includes('microwave') || fullText.includes('air fryer') || fullText.includes('kitchen')) {
+                e.target.src = 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80';
+            } else if (fullText.includes('monitor') || fullText.includes('display') || fullText.includes('odyssey') || fullText.includes('ergonomic')) {
+                e.target.src = 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80';
+            } else if (fullText.includes('iphone') || fullText.includes('galaxy s24') || fullText.includes('phone') || fullText.includes('mobile')) {
+                e.target.src = 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80';
+            } else if (fullText.includes('headphone') || fullText.includes('earbud') || fullText.includes('audio') || fullText.includes('speaker') || fullText.includes('sony wh')) {
+                e.target.src = 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80';
+            } else if (fullText.includes('watch') || fullText.includes('wearable') || fullText.includes('smartwatch')) {
+                e.target.src = 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80';
+            } else if (fullText.includes('macbook') || fullText.includes('laptop') || fullText.includes('strix') || fullText.includes('rog')) {
+                e.target.src = 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80';
+            } else {
+                e.target.src = 'https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=600&q=80';
+            }
         }
     }, true);
 
