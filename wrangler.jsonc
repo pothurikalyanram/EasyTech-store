@@ -1,0 +1,13 @@
+{
+  "name": "easytech-site-live",
+  "compatibility_date": "2026-08-03",
+  "assets": {
+    "directory": ".",
+    "exclude": [
+      "node_modules/**",
+      ".git/**",
+      ".env*",
+      "netlify/**"
+    ]
+  }
+}

@@ -4,7 +4,10 @@
   "description": "EasyTech E-Commerce Platform",
   "main": "index.html",
   "scripts": {
-    "build": "echo 'Static build ready'"
+    "build": "echo 'Static build ready'",
+    "deploy": "wrangler deploy"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
 }
